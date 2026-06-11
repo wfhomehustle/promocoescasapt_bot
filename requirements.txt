@@ -1,0 +1,4 @@
+requests
+python-dotenv
+Pillow
+python-telegram-bot==13.15
