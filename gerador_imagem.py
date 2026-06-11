@@ -28,12 +28,8 @@ LARGURA, ALTURA = 1080, 1080
 def _descarregar_imagem(url: str):
     try:
         url = url.strip().replace(" ", "%20")
-        # Remove o https:// para o weserv
-        url_limpo = url.replace("https://", "").replace("http://", "")
-        proxy_url = f"https://images.weserv.nl/?url={url_limpo}"
-
         headers = {"User-Agent": "Mozilla/5.0"}
-        resp = requests.get(proxy_url, headers=headers, timeout=15)
+        resp = requests.get(url, headers=headers, timeout=10)
         resp.raise_for_status()
         return Image.open(io.BytesIO(resp.content)).convert("RGBA")
     except Exception as e:
