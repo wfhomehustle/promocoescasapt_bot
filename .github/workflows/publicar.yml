@@ -1,0 +1,43 @@
+name: Publicar Ofertas
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # 09:00 em Portugal (verão) / 08:00 (inverno)
+    - cron: '0 12 * * *'
+    - cron: '0 17 * * *'
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Criar ficheiro .env
+        run: |
+          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> .env
+          echo "TELEGRAM_CHANNEL_ID=${{ secrets.TELEGRAM_CHANNEL_ID }}" >> .env
+          echo "AMAZON_ACCESS_KEY=${{ secrets.AMAZON_ACCESS_KEY }}" >> .env
+          echo "AMAZON_SECRET_KEY=${{ secrets.AMAZON_SECRET_KEY }}" >> .env
+          echo "AMAZON_ASSOCIATE_TAG=${{ secrets.AMAZON_ASSOCIATE_TAG }}" >> .env
+          echo "NOME_CANAL=${{ secrets.NOME_CANAL }}" >> .env
+
+      - name: Publicar ofertas
+        run: python publicar.py
+
+      - name: Guardar registo de publicados
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add publicados.txt
+          git commit -m "Atualiza publicados.txt" || echo "Sem alterações"
+          git push
