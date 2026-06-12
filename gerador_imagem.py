@@ -1,7 +1,8 @@
 # gerador_imagem.py
 """
 Gera uma imagem 1080x1080 com:
- - Foto do produto
+ - Fundo branco
+ - Foto do produto a ocupar toda a largura
  - Preço anterior riscado, em letra pequena
  - Preço promocional, em letra grande
  - Selo de desconto
@@ -14,13 +15,13 @@ import requests
 from PIL import Image, ImageDraw, ImageFont
 
 # Cores
-FUNDO_ESCURO   = (15, 15, 20)
-CARTAO_FUNDO   = (26, 26, 36)
-DOURADO        = (250, 185, 11)
-CINZENTO_CLARO = (180, 180, 190)
-CINZENTO_MEDIO = (110, 110, 125)
-VERMELHO       = (220, 38, 38)
 BRANCO         = (255, 255, 255)
+PRETO          = (20, 20, 25)
+DOURADO_ESCURO = (200, 140, 0)     # dourado mais escuro para contraste no branco
+CINZENTO_CLARO = (130, 130, 140)
+CINZENTO_MEDIO = (150, 150, 160)
+VERMELHO       = (220, 38, 38)
+LINHA_SEP      = (230, 230, 235)
 
 LARGURA, ALTURA = 1080, 1080
 
@@ -67,28 +68,35 @@ def criar_imagem_oferta(titulo: str,
                         url_imagem_produto: str | None,
                         nome_canal: str = "Casa & Cozinha PT 🏠") -> Image.Image:
 
-    canvas = Image.new("RGB", (LARGURA, ALTURA), FUNDO_ESCURO)
+    canvas = Image.new("RGB", (LARGURA, ALTURA), BRANCO)
     draw = ImageDraw.Draw(canvas)
 
-    # Área do produto
-    AREA_PRODUTO_ALTURA = 580
-    draw.rounded_rectangle(
-        (40, 40, LARGURA - 40, AREA_PRODUTO_ALTURA),
-        radius=24, fill=CARTAO_FUNDO
-    )
+    # Área do produto — imagem a ocupar toda a largura
+    AREA_PRODUTO_ALTURA = 620
 
-    # Imagem do produto centrada
     if url_imagem_produto:
         img_produto = _descarregar_imagem(url_imagem_produto)
         if img_produto:
-            img_produto.thumbnail((460, 460), Image.LANCZOS)
-            fundo_branco = Image.new("RGBA", img_produto.size, (255, 255, 255, 230))
-            combinado = Image.alpha_composite(fundo_branco, img_produto).convert("RGB")
-            px = (LARGURA - combinado.width) // 2
-            py = 60 + (460 - combinado.height) // 2
-            canvas.paste(combinado, (px, py))
+            # Redimensiona para ocupar toda a largura, mantendo proporção,
+            # e centra verticalmente dentro da área do produto
+            img_produto = img_produto.convert("RGB")
+            ratio = LARGURA / img_produto.width
+            nova_largura = LARGURA
+            nova_altura = int(img_produto.height * ratio)
 
-    # Selo de desconto
+            if nova_altura > AREA_PRODUTO_ALTURA:
+                # Imagem muito alta — corta o excesso (mantém o centro)
+                img_produto = img_produto.resize((nova_largura, nova_altura), Image.LANCZOS)
+                excesso = nova_altura - AREA_PRODUTO_ALTURA
+                img_produto = img_produto.crop((0, excesso // 2, nova_largura, excesso // 2 + AREA_PRODUTO_ALTURA))
+                canvas.paste(img_produto, (0, 0))
+            else:
+                # Imagem mais pequena que a área — centra verticalmente
+                img_produto = img_produto.resize((nova_largura, nova_altura), Image.LANCZOS)
+                py = (AREA_PRODUTO_ALTURA - nova_altura) // 2
+                canvas.paste(img_produto, (0, py))
+
+    # Selo de desconto (sobreposto no canto superior direito da imagem)
     if desconto_pct > 0:
         raio = 72
         cx, cy = LARGURA - 40 - raio, 40 + raio
@@ -108,14 +116,14 @@ def criar_imagem_oferta(titulo: str,
 
     # Linha separadora
     draw.line([(40, AREA_PRODUTO_ALTURA + 10), (LARGURA - 40, AREA_PRODUTO_ALTURA + 10)],
-              fill=(50, 50, 65), width=2)
+              fill=LINHA_SEP, width=2)
 
     # Título do produto (até 3 linhas)
     fonte_titulo = _carregar_fonte(34, negrito=True)
     linhas = textwrap.wrap(titulo[:110], width=34)[:3]
     ty = AREA_PRODUTO_ALTURA + 28
     for linha in linhas:
-        draw.text((60, ty), linha, font=fonte_titulo, fill=BRANCO)
+        draw.text((60, ty), linha, font=fonte_titulo, fill=PRETO)
         ty += 44
 
     # Preços
@@ -129,11 +137,11 @@ def criar_imagem_oferta(titulo: str,
         y_promo = Y_PRECO
 
     fonte_promo = _carregar_fonte(88, negrito=True)  # letra grande
-    draw.text((60, y_promo), preco_promo, font=fonte_promo, fill=DOURADO)
+    draw.text((60, y_promo), preco_promo, font=fonte_promo, fill=DOURADO_ESCURO)
 
     # Rodapé
     altura_rodape = ALTURA - 80
-    draw.rectangle([(0, altura_rodape - 10), (LARGURA, ALTURA)], fill=(10, 10, 15))
+    draw.rectangle([(0, altura_rodape - 10), (LARGURA, ALTURA)], fill=BRANCO)
     draw.line([(0, altura_rodape - 10), (LARGURA, altura_rodape - 10)], fill=VERMELHO, width=3)
 
     fonte_rodape = _carregar_fonte(28, negrito=True)
