@@ -1,0 +1,26 @@
+name: Importar Produtos do CSV
+
+on:
+  workflow_dispatch:
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Importar produtos do CSV
+        run: python importar_csv.py
+
+      - name: Guardar fila e CSV atualizados
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add produtos_fila.json produtos_novos.csv
+          git commit -m "Importa produtos do CSV para a fila" || echo "Sem alterações"
+          git push
