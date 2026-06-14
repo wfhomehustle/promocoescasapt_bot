@@ -1,1 +1,573 @@
-[]
+[
+  {
+    "asin": "LINK44205841",
+    "titulo": "Smartwatch para Homem com GPS",
+    "preco": "40,65 €",
+    "preco_anterior": "129,99 €",
+    "desconto": "69",
+    "imagem": "https://m.media-amazon.com/images/I/71yUMdIIzGL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/448NEfq",
+    "caracteristicas": [
+      "Android Wear 2.0",
+      "Capacidade de armazenamento 1GB",
+      "GPS Leitor de música Lembrete sedentário Rastreador de atividade Tela Sensível ao Toque"
+    ]
+  },
+  {
+    "asin": "LINK24893552",
+    "titulo": "TIMU Altavoz Bluetooth 5.4 Potente 25W",
+    "preco": "28,97 €",
+    "preco_anterior": "101,65 €",
+    "desconto": "71",
+    "imagem": "https://m.media-amazon.com/images/I/81LqpQIVdmL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4vcu125",
+    "caracteristicas": [
+      "Compatível com PC 8 Modos RGB 24H de reprodução",
+      "Emparelhamento com TWS IPX7 Micro SD e AUX"
+    ]
+  },
+  {
+    "asin": "LINK43762415",
+    "titulo": "GREENKINDER Câmara fotos infantis instantâneas",
+    "preco": "33,37 €",
+    "preco_anterior": "49,98 €",
+    "desconto": "33",
+    "imagem": "https://m.media-amazon.com/images/I/711CK+Z3ZFL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3QeNY9h",
+    "caracteristicas": [
+      "3.0 polegadas 14 MP câmara fotos infantis",
+      "com cartão de 32 GB e papel de impressão",
+      "HD 1080P câmara instantânea"
+    ]
+  },
+  {
+    "asin": "LINK40880844",
+    "titulo": "Auriculares Bluetooth 5.4 HiFi estéreo",
+    "preco": "27,44 €",
+    "preco_anterior": "99,99 €",
+    "desconto": "73",
+    "imagem": "https://m.media-amazon.com/images/I/71rQ9klE9sL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4xrWp1t",
+    "caracteristicas": [
+      "Auriculares Bluetooth 5.4 HiFi estéreo com 4 HD Mic 50H",
+      "Com cancelamento de ruído ENC",
+      "Ecrã LED/IP7 impermeável"
+    ]
+  },
+  {
+    "asin": "LINK67822439",
+    "titulo": "Lefant M310 Ultra Robot aspirador e esfregona de 3 em 1",
+    "preco": "99,99 €",
+    "preco_anterior": "359,99 €",
+    "desconto": "72",
+    "imagem": "https://m.media-amazon.com/images/I/81QrXACaFEL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4epeipc",
+    "caracteristicas": [
+      "Sucção de 6000 Pa 170 min",
+      "Mapeamento a laser toF",
+      "Evasão de obstáculos PSD de 190°"
+    ]
+  },
+  {
+    "asin": "LINK43099014",
+    "titulo": "Moulinex QuickChef Batedeira de mão de 1000 W",
+    "preco": "35,57 €",
+    "preco_anterior": "55,90 €",
+    "desconto": "36",
+    "imagem": "https://m.media-amazon.com/images/I/61eD7rIz3-L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4eo52l0",
+    "caracteristicas": [
+      "regulador de 10 velocidades Turbo com 2 acessórios para picar",
+      "Picadora e copo medidor",
+      "Cúpula anti-salpicos"
+    ]
+  },
+  {
+    "asin": "LINK89543420",
+    "titulo": "ErGear Mesa elevável elétrica",
+    "preco": "132,46 €",
+    "preco_anterior": "203,29 €",
+    "desconto": "35",
+    "imagem": "https://m.media-amazon.com/images/I/71WHyC4Li6L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4eHSLt5",
+    "caracteristicas": [
+      "Painel inteligente de 4 memórias e gancho",
+      "Tabuleiro de mesa montado com painéis (branco 160x80 cm)"
+    ]
+  },
+  {
+    "asin": "LINK52031493",
+    "titulo": "Tefal Optigrill - Grelhador 2000 W",
+    "preco": "121,98 €",
+    "preco_anterior": "213,47 €",
+    "desconto": "43",
+    "imagem": "https://m.media-amazon.com/images/I/71ioiGhS6tL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4a2Yt69",
+    "caracteristicas": [
+      "6 modos de cozedura",
+      "4 temperaturas ajustáveis com indicador de progresso",
+      "Bandejas extraíveis e desmontáveis"
+    ]
+  },
+  {
+    "asin": "LINK5193940",
+    "titulo": "TecTake® Conjunto de 4 malas rígidas",
+    "preco": "88,23 €",
+    "preco_anterior": "111,72 €",
+    "desconto": "21",
+    "imagem": "https://m.media-amazon.com/images/I/81tkYYssBKL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4uE8qi2",
+    "caracteristicas": [
+      "3 malas e 1 nécessaire",
+      "Rodas de 360º e  fechadura de combinação",
+      "Com balança e etiquetas de bagagem"
+    ]
+  },
+  {
+    "asin": "LINK87009895",
+    "titulo": "ARRIGO BELLO Sandálias desportivas homem verão",
+    "preco": "28,97 €",
+    "preco_anterior": "45,73 €",
+    "desconto": "37",
+    "imagem": "https://m.media-amazon.com/images/I/41unB0eq+cL._AC_SY535_.jpg",
+    "link": "https://amzn.to/3Qemkct",
+    "caracteristicas": [
+      "Antiderrapantes leves confortáveis",
+      "Trekking caminhadas ao ar livre praia",
+      "Tamanho 41-46"
+    ]
+  },
+  {
+    "asin": "LINK87728652",
+    "titulo": "BULLIANT Cinto homem couro",
+    "preco": "19,30 €",
+    "preco_anterior": "29,47 €",
+    "desconto": "35",
+    "imagem": "https://m.media-amazon.com/images/I/71kodxUmG4L._AC_SY741_.jpg",
+    "link": "https://amzn.to/4vTiOn8",
+    "caracteristicas": [
+      "Cinto de homem 35 mm",
+      "Tamanho ajustável"
+    ]
+  },
+  {
+    "asin": "LINK18269302",
+    "titulo": "XTI - Sneakers 143721 mulher bege",
+    "preco": "37,02 €",
+    "preco_anterior": "60,95 €",
+    "desconto": "39",
+    "imagem": "https://m.media-amazon.com/images/I/512Xh+ZsZgL._AC_SY695_.jpg",
+    "link": "https://amzn.to/4asTiN2",
+    "caracteristicas": [
+      "Cunha com sola de borracha antiderrapante.",
+      "Ideal para ganhar cm sem perder conforto.",
+      "Este modelo obteve o certificado vegano pela organização mundial PETA (organização dos direitos dos animais)"
+    ]
+  },
+  {
+    "asin": "LINK23802610",
+    "titulo": "Philips OneBlade 360 Máquina de barbear híbrida",
+    "preco": "29,47 €",
+    "preco_anterior": "60,98 €",
+    "desconto": "52",
+    "imagem": "https://m.media-amazon.com/images/I/61EK-iKptSL._AC_SL1000_.jpg",
+    "link": "https://amzn.to/3PYQRek",
+    "caracteristicas": [
+      "Barbeador elétrico e máquina de barbear",
+      "2 lâminas 360",
+      "Guia de pente ajustável 5 em 1"
+    ]
+  },
+  {
+    "asin": "LINK31407274",
+    "titulo": "Philips Série 8000 Depiladora de Luz Pulsada Lumea IPL",
+    "preco": "335,45 €",
+    "preco_anterior": "569,24 €",
+    "desconto": "41",
+    "imagem": "https://m.media-amazon.com/images/I/71NlXgMezeL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3QCRZ7z",
+    "caracteristicas": [
+      "Alternativa à Depilação a Laser",
+      "Com Estojo Acessórios para o Corpo Rosto Bikini e Axilas",
+      "Pele Macia Desde Casa"
+    ]
+  },
+  {
+    "asin": "LINK75034217",
+    "titulo": "Creme Hidratante Intensivo Power Lifting de Colágeno MIZON (75ml)",
+    "preco": "14,00 €",
+    "preco_anterior": "30,49 €",
+    "desconto": "54",
+    "imagem": "https://m.media-amazon.com/images/I/51qAHJSQ4iL._AC_SL1080_.jpg",
+    "link": "https://amzn.to/4vesqZA",
+    "caracteristicas": [
+      "Cosmético Coreano (Creme Power Lifting de Colágeno)",
+      "Com 75% de Extrato de Colágeno Marinho"
+    ]
+  },
+  {
+    "asin": "LINK3476860",
+    "titulo": "Escova de ar Smooth Finish 1200 da BaByliss",
+    "preco": "27,34 €",
+    "preco_anterior": "60,89 €",
+    "desconto": "55",
+    "imagem": "https://m.media-amazon.com/images/I/71dqRF5naxL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4ostVkh",
+    "caracteristicas": [
+      "Com 4 acessórios para adicionar volume moldar e alisar",
+      "3 configurações de temperatura",
+      "Tecnologia iónica"
+    ]
+  },
+  {
+    "asin": "LINK10192599",
+    "titulo": "Bicicleta estática para casa com APP",
+    "preco": "191,09 €",
+    "preco_anterior": "325,27 €",
+    "desconto": "41",
+    "imagem": "https://m.media-amazon.com/images/I/81hZ+m5eqVL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4vimu1S",
+    "caracteristicas": [
+      "Silenciosa com resistência magnética 0-100%",
+      "Ecrã LED suporte para mangueiras e porta-copos",
+      "Estrutura estável max 160 kg"
+    ]
+  },
+  {
+    "asin": "LINK69534543",
+    "titulo": "TecTake® Cozinha de campismo dobrável",
+    "preco": "55,69 €",
+    "preco_anterior": "71,06 €",
+    "desconto": "22",
+    "imagem": "https://m.media-amazon.com/images/I/71-KXJB1VpL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4uBimZC",
+    "caracteristicas": [
+      "Leve com bolsa de transporte acessórios de cozinha",
+      "mesa dobrável de campismo armário de cozinha camping"
+    ]
+  },
+  {
+    "asin": "LINK40361577",
+    "titulo": "Evanda Conjunto de talheres de campismo de 10 peças",
+    "preco": "10,95 €",
+    "preco_anterior": "17,27 €",
+    "desconto": "37",
+    "imagem": "https://m.media-amazon.com/images/I/71kPsykV0bL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4eom2Yv",
+    "caracteristicas": [
+      "Caneca reutilizável de peso leve prato e conjunto de talheres de aço inoxidável com saco preto",
+      "Para acampar 2 pessoas",
+      "Apto para máquina de lavar"
+    ]
+  },
+  {
+    "asin": "LINK7332957",
+    "titulo": "Grsta Garrafa Desportiva - 1000ML",
+    "preco": "9,96 €",
+    "preco_anterior": "15,24 €",
+    "desconto": "35",
+    "imagem": "https://m.media-amazon.com/images/I/6114JS41a9L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4uCpbKj",
+    "caracteristicas": [
+      "À Prova de Fugas e sem BPA",
+      "Garrafa de Ginásio Motivacional com Marcador de Tempo para Ciclismo e Escola"
+    ]
+  },
+  {
+    "asin": "LINK51725120",
+    "titulo": "LEGO Icons Ferrari F2004 e Michael Schumacher",
+    "preco": "73,19 €",
+    "preco_anterior": "91,48 €",
+    "desconto": "20",
+    "imagem": "https://m.media-amazon.com/images/I/81gLdY0+N+L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4xohZE9",
+    "caracteristicas": [
+      "Maquete para adultos de carro de F1",
+      "Motor V10 com minifigura de piloto colecionável",
+      "Presente para homens e mulheres fãs de fórmula 1"
+    ]
+  },
+  {
+    "asin": "LINK43026338",
+    "titulo": "Dislocati Microfone Infantil com Suporte Ajustável",
+    "preco": "24,32 €",
+    "preco_anterior": "36,99 €",
+    "desconto": "34",
+    "imagem": "https://m.media-amazon.com/images/I/71Sy0qp4SML._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/447Q5yL",
+    "caracteristicas": [
+      "Microfone Duplo Luzes de Cores Altura 47-108 cm",
+      "Presente para Crianças 3+ Anos",
+      "Bluetooth/TF/USB/AUX (Cor Roxo)"
+    ]
+  },
+  {
+    "asin": "LINK47933347",
+    "titulo": "COOLJOYA Blocos Magnéticos Construção para Crianças",
+    "preco": "15,58 €",
+    "preco_anterior": "24,39 €",
+    "desconto": "36",
+    "imagem": "https://m.media-amazon.com/images/I/91eEqxuNUBL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4osw1AF",
+    "caracteristicas": [
+      "Brinquedos Educativos Montessori para Crianças de 3 a 8 Anos",
+      "50 Peças Magnéticas"
+    ]
+  },
+  {
+    "asin": "LINK75185022",
+    "titulo": "Dron com câmara 4K para adultos S166 GPS",
+    "preco": "100,91 €",
+    "preco_anterior": "142,30 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/61rJa0KJzHL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/43CNCMJ",
+    "caracteristicas": [
+      "3 baterias 60 min voo",
+      "Retorno automático descolagem e aterragem com um botão",
+      "Peso <249 g"
+    ]
+  },
+  {
+    "asin": "LINK81936170",
+    "titulo": "ENGROSAR Mosquiteira magnética 90 x 210 cm",
+    "preco": "14,46 €",
+    "preco_anterior": "29,47 €",
+    "desconto": "51",
+    "imagem": "https://m.media-amazon.com/images/I/81sg9uqDN8L._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4eEeZfz",
+    "caracteristicas": [
+      "Cortina mosquiteira para porta exterior de varanda/pátio",
+      "Fecho automático",
+      "Fácil instalação sem perfuração (branco)"
+    ]
+  },
+  {
+    "asin": "LINK92399097",
+    "titulo": "Ginour Berbequim Percutor a Bateria sem escovas 50Nm 21V",
+    "preco": "56,88 €",
+    "preco_anterior": "91,48 €",
+    "desconto": "38",
+    "imagem": "https://m.media-amazon.com/images/I/714RCBf-57L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3SHbcp6",
+    "caracteristicas": [
+      "Aparafusadora com 2x2Ah Baterias compatível com Makita 18V",
+      "47 Acessórios 23+3 Par 2 Velocidades"
+    ]
+  },
+  {
+    "asin": "LINK20261675",
+    "titulo": "Vantamo Alarme pessoal para mulheres 130 dB",
+    "preco": "18,29 €",
+    "preco_anterior": "30,49 €",
+    "desconto": "40",
+    "imagem": "https://m.media-amazon.com/images/I/81jMTRoQu6L._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4vG8heA",
+    "caracteristicas": [
+      "Com altifalante duplo luz estroboscópica potente e indicador de bateria baixa",
+      "Porta-chaves dispositivo de autodefesa pessoal compacto"
+    ]
+  },
+  {
+    "asin": "LINK45388607",
+    "titulo": "Home Cofre Pequeno com Chave de 20x31x20cm",
+    "preco": "42,82 €",
+    "preco_anterior": "56,79 €",
+    "desconto": "25",
+    "imagem": "https://m.media-amazon.com/images/I/713eIYZ0WNL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4ejt0Oj",
+    "caracteristicas": [
+      "Capacidade de 11L",
+      "Para Joias e Dinheiro com Fechadura"
+    ]
+  },
+  {
+    "asin": "LINK43739676",
+    "titulo": "Probióticos para cães Acevit Nutrition 150 unidades",
+    "preco": "17,33 €",
+    "preco_anterior": "28,90 €",
+    "desconto": "40",
+    "imagem": "https://m.media-amazon.com/images/I/81dQdxQGrAL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4uFvGw7",
+    "caracteristicas": [
+      "100% natural com prebióticos e fibra",
+      "Combate diarreia e fezes moles repara a flora intestinal e reforça o sistema imunológico"
+    ]
+  },
+  {
+    "asin": "LINK66748053",
+    "titulo": "Heybly Raspador para gatos XXL 188 cm",
+    "preco": "86,90 €",
+    "preco_anterior": "111,81 €",
+    "desconto": "22",
+    "imagem": "https://m.media-amazon.com/images/I/81NvkkysMvL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3Sayxzp",
+    "caracteristicas": [
+      "Torre de vários andares",
+      "3 grutas escalonadas amplos cabides descanso e postes",
+      "Cinzento claro HCT061W"
+    ]
+  },
+  {
+    "asin": "LINK40748559",
+    "titulo": "Feandrea Tapetes Laváveis para Cães Gatos Coelhos",
+    "preco": "35,28 €",
+    "preco_anterior": "50,81 €",
+    "desconto": "31",
+    "imagem": "https://m.media-amazon.com/images/I/81Mfm7nQnfL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4vOFtkq",
+    "caracteristicas": [
+      "Tapetes Absorventes Reutilizáveis 152 x 122 cm",
+      "Conjunto de 2 XXL",
+      "Impermeáveis Antiderrapantes Alta Absorção"
+    ]
+  },
+  {
+    "asin": "LINK90431854",
+    "titulo": "PETLIV Comedouro automático para gatos ou cães",
+    "preco": "122,73 €",
+    "preco_anterior": "159,99 €",
+    "desconto": "23",
+    "imagem": "https://m.media-amazon.com/images/I/71w41z1eQ1L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4xk3bX8",
+    "caracteristicas": [
+      "Com 2 tigelas dispensador de comida de 5 litros",
+      "controle por aplicativo WiFi 5G/2.4G",
+      "Fonte de alimentação dupla áudio bidirecional"
+    ]
+  },
+  {
+    "asin": "LINK37832761",
+    "titulo": "ORGBRO X1 Etiquetadoras impressora térmica de etiquetas autocolantes",
+    "preco": "15,58 €",
+    "preco_anterior": "25,40 €",
+    "desconto": "39",
+    "imagem": "https://m.media-amazon.com/images/I/61NakHyraAL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3QExkA0",
+    "caracteristicas": [
+      "Compatível com iOS/Android para casa e escritório",
+      "Bluetooth",
+      "Inclui 1 rolo de etiquetas (branco)"
+    ]
+  },
+  {
+    "asin": "LINK21905026",
+    "titulo": "Paper Mate InkJoy 100ST Caneta esferográfica azul com tampa",
+    "preco": "12,29 €",
+    "preco_anterior": "33,54 €",
+    "desconto": "63",
+    "imagem": "https://m.media-amazon.com/images/I/81kajTPO2wL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4vcsskM",
+    "caracteristicas": [
+      "Ponta média (1.0 mm)",
+      "Caixa de 50"
+    ]
+  },
+  {
+    "asin": "LINK98677536",
+    "titulo": "Marcadores permanentes Sharpie Glam Pop",
+    "preco": "19,36 €",
+    "preco_anterior": "24,38 €",
+    "desconto": "21",
+    "imagem": "https://m.media-amazon.com/images/I/91MQny5pFqL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4gl6gjC",
+    "caracteristicas": [
+      "34 marcadores de cores sortidas",
+      "Ponta fina para detalhes ousados"
+    ]
+  },
+  {
+    "asin": "LINK32713506",
+    "titulo": "Esselte 624291 - Arquivador de alavanca com argolas Essentials",
+    "preco": "11,17 €",
+    "preco_anterior": "16,16 €",
+    "desconto": "31",
+    "imagem": "https://m.media-amazon.com/images/I/61gyq1EjFNL._AC_SX300_SY300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4vLPqie",
+    "caracteristicas": [
+      "Capacidade de 500 folhas A4",
+      "3 unidades azul 75 mm"
+    ]
+  },
+  {
+    "asin": "LINK4637604",
+    "titulo": "Oral-B Série iO Ultimate Clean Pacote de 6",
+    "preco": "32,32 €",
+    "preco_anterior": "55,90 €",
+    "desconto": "42",
+    "imagem": "https://m.media-amazon.com/images/I/71cOtyljdLL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/446LoVZ",
+    "caracteristicas": [
+      "6 Reposições Pretas para Escovas de Dentes Elétricas Oral-B iO",
+      "Eliminação Profunda da Placa Bacteriana"
+    ]
+  },
+  {
+    "asin": "LINK57774074",
+    "titulo": "Beurer EM 59 Eletroestimulador digital",
+    "preco": "55,90 €",
+    "preco_anterior": "80,17 €",
+    "desconto": "30",
+    "imagem": "https://m.media-amazon.com/images/I/71wsJvWYxUL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4ott6HL",
+    "caracteristicas": [
+      "Com função calor tens ems e massagem",
+      "2 canais 4 eletrodos com pads de gel",
+      "Intensidade regulável temporizador cor preto vermelho"
+    ]
+  },
+  {
+    "asin": "LINK36808381",
+    "titulo": "Ensure Nutrivigor - Suplemento alimentar para adultos",
+    "preco": "11,90 €",
+    "preco_anterior": "16,77 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/61lZci5tQgL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4a3GJaW",
+    "caracteristicas": [
+      "Com HMB proteínas vitaminas e minerais como cálcio",
+      "Sabor baunilha 400 g"
+    ]
+  },
+  {
+    "asin": "LINK4299388",
+    "titulo": "RENPHO Pistola de Massagem Muscular",
+    "preco": "67,58 €",
+    "preco_anterior": "111,81 €",
+    "desconto": "40",
+    "imagem": "https://m.media-amazon.com/images/I/71Vca40OAeL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4eoRbuK",
+    "caracteristicas": [
+      "Silenciosa Massage Gun Profissional e Carregamento Tipo-C",
+      "Para Relaxamento de Massagem Muscular Azul"
+    ]
+  },
+  {
+    "asin": "LINK33042806",
+    "titulo": "Dodot Toalhetes Pure Aqua para bebé",
+    "preco": "34,06 €",
+    "preco_anterior": "42,42 €",
+    "desconto": "20",
+    "imagem": "https://m.media-amazon.com/images/I/81jh1DU1c9L._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4vGM7sS",
+    "caracteristicas": [
+      "18 pacotes de 48 unidades",
+      "Ajudam a restaurar o PH natural da pele",
+      "99% água sem plástico"
+    ]
+  },
+  {
+    "asin": "LINK57994227",
+    "titulo": "Tommee Tippee Recipiente para fraldas Twist & Click",
+    "preco": "15,23 €",
+    "preco_anterior": "35,57 €",
+    "desconto": "57",
+    "imagem": "https://m.media-amazon.com/images/I/710xm8i1+vL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "link": "https://amzn.to/4oD5gcP",
+    "caracteristicas": [
+      "Pack exclusivo com x 2 peças de reposição incluídas",
+      "Proteção garantida contra maus odores e germes",
+      "Grande capacidade"
+    ]
+  }
+]
