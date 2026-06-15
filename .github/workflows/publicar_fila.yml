@@ -34,6 +34,14 @@ jobs:
       - name: Publicar próximo da fila
         run: python publicar_da_fila.py
 
+      - name: Guardar imagens para redes sociais
+        uses: actions/upload-artifact@v4
+        with:
+          name: imagens-sociais
+          path: imagens_sociais/
+          retention-days: 7
+        continue-on-error: true
+
       - name: Guardar fila atualizada
         run: |
           git config user.name "github-actions"
