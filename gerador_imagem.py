@@ -1,6 +1,7 @@
 # gerador_imagem.py
 import os
 import io
+import re
 import textwrap
 import requests
 from PIL import Image, ImageDraw, ImageFont
@@ -14,6 +15,10 @@ CINZENTO_MEDIO = (150, 150, 160)
 VERMELHO       = (220, 38, 38)
 LINHA_SEP      = (230, 230, 235)
 
+
+# ─────────────────────────────────────────────
+# UTILITÁRIOS
+# ─────────────────────────────────────────────
 
 def _descarregar_imagem(url: str):
     try:
@@ -43,6 +48,15 @@ def _carregar_fonte(tamanho: int, negrito: bool = False):
     return ImageFont.load_default()
 
 
+def _remover_emojis(texto: str) -> str:
+    """Remove emojis de uma string para evitar [] nas imagens."""
+    return re.sub(
+        r'[\U00010000-\U0010ffff\U0001F300-\U0001FAFF\U00002600-\U000027BF'
+        r'\U0001FA00-\U0001FA9F\U00002702-\U000027B0\U0000FE00-\U0000FE0F]',
+        '', texto, flags=re.UNICODE
+    ).strip()
+
+
 def _texto_riscado(draw, x, y, texto, fonte, cor):
     draw.text((x, y), texto, font=fonte, fill=cor)
     caixa = draw.textbbox((x, y), texto, font=fonte)
@@ -51,21 +65,25 @@ def _texto_riscado(draw, x, y, texto, fonte, cor):
 
 
 def _colar_imagem_produto(canvas, img_produto, x, y, largura, altura):
-    """Redimensiona e cola imagem do produto numa área definida."""
+    """
+    Redimensiona a imagem do produto para caber na área definida
+    SEM cortar — mantém proporções e centra na área.
+    """
     img_produto = img_produto.convert("RGB")
-    ratio = largura / img_produto.width
-    nova_largura = largura
-    nova_altura = int(img_produto.height * ratio)
 
-    if nova_altura > altura:
-        img_produto = img_produto.resize((nova_largura, nova_altura), Image.LANCZOS)
-        excesso = nova_altura - altura
-        img_produto = img_produto.crop((0, excesso // 2, nova_largura, excesso // 2 + altura))
-    else:
-        img_produto = img_produto.resize((nova_largura, nova_altura), Image.LANCZOS)
-        y = y + (altura - nova_altura) // 2
+    ratio_largura = largura / img_produto.width
+    ratio_altura  = altura  / img_produto.height
+    ratio         = min(ratio_largura, ratio_altura)
 
-    canvas.paste(img_produto, (x, y))
+    nova_largura = int(img_produto.width  * ratio)
+    nova_altura  = int(img_produto.height * ratio)
+
+    img_produto = img_produto.resize((nova_largura, nova_altura), Image.LANCZOS)
+
+    offset_x = x + (largura - nova_largura) // 2
+    offset_y = y + (altura  - nova_altura)  // 2
+
+    canvas.paste(img_produto, (offset_x, offset_y))
 
 
 def _desenhar_badge(draw, cx, cy, raio, desconto_pct):
@@ -77,9 +95,11 @@ def _desenhar_badge(draw, cx, cy, raio, desconto_pct):
     texto_pct = f"-{desconto_pct}%"
     caixa = draw.textbbox((0, 0), texto_pct, font=fonte_grande)
     draw.text(
-        (cx - (caixa[2]-caixa[0])//2, cy - (caixa[3]-caixa[1])//2 - int(raio*0.1)),
+        (cx - (caixa[2]-caixa[0])//2,
+         cy - (caixa[3]-caixa[1])//2 - int(raio * 0.1)),
         texto_pct, font=fonte_grande, fill=BRANCO
     )
+
     texto_poupa = "POUPA"
     caixa2 = draw.textbbox((0, 0), texto_poupa, font=fonte_pequena)
     draw.text(
@@ -88,12 +108,15 @@ def _desenhar_badge(draw, cx, cy, raio, desconto_pct):
     )
 
 
-def _desenhar_rodape(canvas, draw, y_inicio, largura, altura_total, nome_canal, tamanho_fonte=28):
-    """Desenha o rodapé vermelho com nome do canal."""
+def _desenhar_rodape_simples(canvas, draw, y_inicio, largura, altura_total,
+                              nome_canal, tamanho_fonte=28):
+    """Rodapé sem emojis — texto limpo com linha vermelha."""
     draw.rectangle([(0, y_inicio), (largura, altura_total)], fill=BRANCO)
     draw.line([(0, y_inicio), (largura, y_inicio)], fill=VERMELHO, width=3)
+
     fonte = _carregar_fonte(tamanho_fonte, negrito=True)
-    texto = f"🛒  {nome_canal}  |  Amazon.es"
+    nome_limpo = _remover_emojis(nome_canal)
+    texto = f"{nome_limpo}  |  Amazon.es"
     caixa = draw.textbbox((0, 0), texto, font=fonte)
     draw.text(
         ((largura - (caixa[2]-caixa[0])) // 2, y_inicio + 8),
@@ -101,86 +124,160 @@ def _desenhar_rodape(canvas, draw, y_inicio, largura, altura_total, nome_canal, 
     )
 
 
+def _carregar_logo(tamanho: int = 80) -> Image.Image | None:
+    """Carrega o logo do canal (logo.png na raiz do projecto)."""
+    caminhos = [
+        "logo.png",
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.png"),
+    ]
+    for caminho in caminhos:
+        if os.path.exists(caminho):
+            try:
+                logo = Image.open(caminho).convert("RGBA")
+                logo.thumbnail((tamanho, tamanho), Image.LANCZOS)
+                return logo
+            except Exception:
+                pass
+    return None
+
+
+def _adicionar_logo(canvas: Image.Image, tamanho: int = 80,
+                    margem: int = 20,
+                    posicao: str = "inferior_esquerdo") -> Image.Image:
+    """
+    Sobrepõe o logo num canto da imagem.
+    posicao: "inferior_esquerdo" | "inferior_direito" |
+             "superior_esquerdo" | "superior_direito"
+    """
+    logo = _carregar_logo(tamanho)
+    if not logo:
+        return canvas
+
+    W, H = canvas.size
+    m = margem
+
+    if posicao == "inferior_esquerdo":
+        x, y = m, H - logo.height - m
+    elif posicao == "inferior_direito":
+        x, y = W - logo.width - m, H - logo.height - m
+    elif posicao == "superior_esquerdo":
+        x, y = m, m
+    else:  # superior_direito
+        x, y = W - logo.width - m, m
+
+    # Fundo branco semi-transparente por trás do logo
+    fundo = Image.new("RGBA", (logo.width + 16, logo.height + 16),
+                      (255, 255, 255, 200))
+    canvas_rgba = canvas.convert("RGBA")
+    canvas_rgba.paste(fundo, (x - 8, y - 8), fundo)
+    canvas_rgba.paste(logo, (x, y), logo)
+
+    return canvas_rgba.convert("RGB")
+
+
 # ─────────────────────────────────────────────
 # FORMATO 1 — Telegram / Instagram Post
-# 1080×1080px (quadrado)
+# 1080×1350px (4:5)
 # ─────────────────────────────────────────────
+
 def criar_imagem_quadrada(titulo, preco_anterior, preco_promo,
                           desconto_pct, url_imagem_produto,
-                          nome_canal="Poupa Mais PT 🇵🇹") -> Image.Image:
+                          nome_canal="Poupa Mais PT") -> Image.Image:
 
-    W, H = 1080, 1080
-    AREA_IMG_H = 620
+    W, H        = 1080, 1350
+    RODAPE_H    = 80
+    PRECOS_H    = 200
+    TITULO_H    = 160
+    SEPARADOR_H = 20
+    AREA_IMG_H  = H - RODAPE_H - PRECOS_H - TITULO_H - SEPARADOR_H
 
     canvas = Image.new("RGB", (W, H), BRANCO)
     draw   = ImageDraw.Draw(canvas)
 
+    # Imagem do produto
     if url_imagem_produto:
         img = _descarregar_imagem(url_imagem_produto)
         if img:
             _colar_imagem_produto(canvas, img, 0, 0, W, AREA_IMG_H)
 
+    # Badge de desconto
     if desconto_pct > 0:
         _desenhar_badge(draw, W - 112, 112, 72, desconto_pct)
 
-    draw.line([(40, AREA_IMG_H + 10), (W - 40, AREA_IMG_H + 10)],
-              fill=LINHA_SEP, width=2)
+    # Linha separadora
+    SEP_Y = AREA_IMG_H + 10
+    draw.line([(40, SEP_Y), (W - 40, SEP_Y)], fill=LINHA_SEP, width=2)
 
-    fonte_titulo = _carregar_fonte(34, negrito=True)
-    linhas = textwrap.wrap(titulo[:110], width=34)[:3]
-    ty = AREA_IMG_H + 28
+    # Título
+    fonte_titulo = _carregar_fonte(36, negrito=True)
+    linhas = textwrap.wrap(_remover_emojis(titulo)[:120], width=34)[:3]
+    ty = SEP_Y + 20
     for linha in linhas:
         draw.text((60, ty), linha, font=fonte_titulo, fill=PRETO)
-        ty += 44
+        ty += 48
 
-    Y_PRECO = 810
+    # Preços
+    Y_PRECO = AREA_IMG_H + SEPARADOR_H + TITULO_H + 20
     if preco_anterior and desconto_pct > 0:
         _texto_riscado(draw, 60, Y_PRECO, preco_anterior,
-                       _carregar_fonte(34), CINZENTO_MEDIO)
-        y_promo = Y_PRECO + 50
+                       _carregar_fonte(36), CINZENTO_MEDIO)
+        y_promo = Y_PRECO + 55
     else:
         y_promo = Y_PRECO
 
     draw.text((60, y_promo), preco_promo,
-              font=_carregar_fonte(88, negrito=True), fill=DOURADO_ESCURO)
+              font=_carregar_fonte(96, negrito=True), fill=DOURADO_ESCURO)
 
-    _desenhar_rodape(canvas, draw, H - 80, W, H, nome_canal, tamanho_fonte=28)
+    # Rodapé
+    _desenhar_rodape_simples(canvas, draw, H - RODAPE_H, W, H,
+                              nome_canal, tamanho_fonte=28)
+
+    # Logo canto inferior esquerdo, por cima do rodapé
+    canvas = _adicionar_logo(canvas, tamanho=90, margem=20,
+                              posicao="inferior_esquerdo")
 
     return canvas
 
 
 # ─────────────────────────────────────────────
 # FORMATO 2 — Pinterest
-# 1000×1500px (2:3 vertical)
+# 1000×1500px (2:3)
 # ─────────────────────────────────────────────
+
 def criar_imagem_pinterest(titulo, preco_anterior, preco_promo,
                            desconto_pct, url_imagem_produto,
-                           nome_canal="Poupa Mais PT 🇵🇹") -> Image.Image:
+                           nome_canal="Poupa Mais PT") -> Image.Image:
 
-    W, H = 1000, 1500
+    W, H       = 1000, 1500
     AREA_IMG_H = 750
 
     canvas = Image.new("RGB", (W, H), BRANCO)
     draw   = ImageDraw.Draw(canvas)
 
+    # Imagem do produto
     if url_imagem_produto:
         img = _descarregar_imagem(url_imagem_produto)
         if img:
             _colar_imagem_produto(canvas, img, 0, 0, W, AREA_IMG_H)
 
+    # Badge de desconto
     if desconto_pct > 0:
         _desenhar_badge(draw, W - 100, 100, 68, desconto_pct)
 
+    # Linha separadora
     draw.line([(30, AREA_IMG_H + 10), (W - 30, AREA_IMG_H + 10)],
               fill=LINHA_SEP, width=2)
 
-    # Etiqueta categoria
-    fonte_etiq  = _carregar_fonte(26, negrito=True)
-    draw.rectangle([(30, AREA_IMG_H + 25), (200, AREA_IMG_H + 65)], fill=VERMELHO)
-    draw.text((45, AREA_IMG_H + 30), "OFERTA", font=fonte_etiq, fill=BRANCO)
+    # Etiqueta "OFERTA"
+    fonte_etiq = _carregar_fonte(26, negrito=True)
+    draw.rectangle([(30, AREA_IMG_H + 25), (200, AREA_IMG_H + 65)],
+                   fill=VERMELHO)
+    draw.text((45, AREA_IMG_H + 30), "OFERTA",
+              font=fonte_etiq, fill=BRANCO)
 
+    # Título
     fonte_titulo = _carregar_fonte(38, negrito=True)
-    linhas = textwrap.wrap(titulo[:120], width=30)[:3]
+    linhas = textwrap.wrap(_remover_emojis(titulo)[:120], width=30)[:3]
     ty = AREA_IMG_H + 80
     for linha in linhas:
         draw.text((30, ty), linha, font=fonte_titulo, fill=PRETO)
@@ -189,9 +286,8 @@ def criar_imagem_pinterest(titulo, preco_anterior, preco_promo,
     # Preços
     Y_PRECO = 1130
     if preco_anterior and desconto_pct > 0:
-        fonte_ant = _carregar_fonte(36)
         _texto_riscado(draw, 30, Y_PRECO, f"Antes: {preco_anterior}",
-                       fonte_ant, CINZENTO_MEDIO)
+                       _carregar_fonte(36), CINZENTO_MEDIO)
         y_promo = Y_PRECO + 55
     else:
         y_promo = Y_PRECO
@@ -201,25 +297,32 @@ def criar_imagem_pinterest(titulo, preco_anterior, preco_promo,
 
     # CTA
     fonte_cta = _carregar_fonte(30, negrito=True)
-    draw.text((30, 1330), "👉 Ver oferta completa:",
+    draw.text((30, 1330), "Ver oferta completa:",
               font=fonte_cta, fill=PRETO)
     draw.text((30, 1375), "t.me/poupamais_pt",
               font=_carregar_fonte(30), fill=VERMELHO)
 
-    _desenhar_rodape(canvas, draw, H - 90, W, H, nome_canal, tamanho_fonte=26)
+    # Rodapé
+    _desenhar_rodape_simples(canvas, draw, H - 90, W, H,
+                              nome_canal, tamanho_fonte=26)
+
+    # Logo canto inferior esquerdo
+    canvas = _adicionar_logo(canvas, tamanho=80, margem=20,
+                              posicao="inferior_esquerdo")
 
     return canvas
 
 
 # ─────────────────────────────────────────────
 # FORMATO 3 — Stories Instagram/Facebook + TikTok
-# 1080×1920px (9:16 vertical)
+# 1080×1920px (9:16)
 # ─────────────────────────────────────────────
+
 def criar_imagem_story(titulo, preco_anterior, preco_promo,
                        desconto_pct, url_imagem_produto,
-                       nome_canal="Poupa Mais PT 🇵🇹") -> Image.Image:
+                       nome_canal="Poupa Mais PT") -> Image.Image:
 
-    W, H = 1080, 1920
+    W, H       = 1080, 1920
     AREA_IMG_H = 900
 
     canvas = Image.new("RGB", (W, H), BRANCO)
@@ -228,7 +331,7 @@ def criar_imagem_story(titulo, preco_anterior, preco_promo,
     # Cabeçalho vermelho
     draw.rectangle([(0, 0), (W, 110)], fill=VERMELHO)
     fonte_header = _carregar_fonte(46, negrito=True)
-    texto_header = "🔥 OFERTA DO DIA"
+    texto_header = "OFERTA DO DIA"
     caixa_h = draw.textbbox((0, 0), texto_header, font=fonte_header)
     draw.text(
         ((W - (caixa_h[2]-caixa_h[0])) // 2, 28),
@@ -241,15 +344,17 @@ def criar_imagem_story(titulo, preco_anterior, preco_promo,
         if img:
             _colar_imagem_produto(canvas, img, 0, 110, W, AREA_IMG_H)
 
+    # Badge de desconto
     if desconto_pct > 0:
         _desenhar_badge(draw, W - 120, 230, 88, desconto_pct)
 
+    # Linha separadora
     draw.line([(40, AREA_IMG_H + 120), (W - 40, AREA_IMG_H + 120)],
               fill=LINHA_SEP, width=2)
 
     # Título
     fonte_titulo = _carregar_fonte(44, negrito=True)
-    linhas = textwrap.wrap(titulo[:100], width=28)[:3]
+    linhas = textwrap.wrap(_remover_emojis(titulo)[:100], width=28)[:3]
     ty = AREA_IMG_H + 145
     for linha in linhas:
         draw.text((50, ty), linha, font=fonte_titulo, fill=PRETO)
@@ -258,9 +363,8 @@ def criar_imagem_story(titulo, preco_anterior, preco_promo,
     # Preços
     Y_PRECO = 1430
     if preco_anterior and desconto_pct > 0:
-        fonte_ant = _carregar_fonte(42)
         _texto_riscado(draw, 50, Y_PRECO, f"Antes: {preco_anterior}",
-                       fonte_ant, CINZENTO_MEDIO)
+                       _carregar_fonte(42), CINZENTO_MEDIO)
         y_promo = Y_PRECO + 65
     else:
         y_promo = Y_PRECO
@@ -271,14 +375,20 @@ def criar_imagem_story(titulo, preco_anterior, preco_promo,
     # CTA
     draw.rectangle([(40, 1720), (W - 40, 1820)], fill=VERMELHO)
     fonte_cta = _carregar_fonte(42, negrito=True)
-    cta_texto = "👆 Link na bio  |  @poupamais_pt"
+    cta_texto = "Link na bio  |  @poupamais_pt"
     caixa_cta = draw.textbbox((0, 0), cta_texto, font=fonte_cta)
     draw.text(
         ((W - (caixa_cta[2]-caixa_cta[0])) // 2, 1745),
         cta_texto, font=fonte_cta, fill=BRANCO
     )
 
-    _desenhar_rodape(canvas, draw, H - 90, W, H, nome_canal, tamanho_fonte=28)
+    # Rodapé
+    _desenhar_rodape_simples(canvas, draw, H - 90, W, H,
+                              nome_canal, tamanho_fonte=28)
+
+    # Logo canto superior esquerdo (bem visível, difícil de cortar)
+    canvas = _adicionar_logo(canvas, tamanho=100, margem=25,
+                              posicao="superior_esquerdo")
 
     return canvas
 
@@ -286,47 +396,47 @@ def criar_imagem_story(titulo, preco_anterior, preco_promo,
 # ─────────────────────────────────────────────
 # FUNÇÃO PRINCIPAL — gera os 3 formatos de uma vez
 # ─────────────────────────────────────────────
+
 def criar_todas_imagens(titulo, preco_anterior, preco_promo,
                         desconto_pct, url_imagem_produto,
-                        nome_canal="Poupa Mais PT 🇵🇹") -> dict:
-    """
-    Gera os 3 formatos e devolve dicionário com os objectos Image.
-    """
+                        nome_canal="Poupa Mais PT") -> dict:
+    """Gera os 3 formatos e devolve dicionário com os objectos Image."""
     return {
         "quadrada":  criar_imagem_quadrada(titulo, preco_anterior, preco_promo,
-                                           desconto_pct, url_imagem_produto, nome_canal),
+                                           desconto_pct, url_imagem_produto,
+                                           nome_canal),
         "pinterest": criar_imagem_pinterest(titulo, preco_anterior, preco_promo,
-                                            desconto_pct, url_imagem_produto, nome_canal),
+                                            desconto_pct, url_imagem_produto,
+                                            nome_canal),
         "story":     criar_imagem_story(titulo, preco_anterior, preco_promo,
-                                        desconto_pct, url_imagem_produto, nome_canal),
+                                        desconto_pct, url_imagem_produto,
+                                        nome_canal),
     }
 
 
-def guardar_imagem(canvas: Image.Image, asin: str, pasta: str = "/tmp") -> str:
-    """Guarda imagem quadrada (Telegram) — compatibilidade com código existente."""
+def guardar_imagem(canvas: Image.Image, asin: str,
+                   pasta: str = "/tmp") -> str:
+    """Guarda imagem quadrada — compatibilidade com código existente."""
     os.makedirs(pasta, exist_ok=True)
     caminho = os.path.join(pasta, f"oferta_{asin}.jpg")
     canvas.convert("RGB").save(caminho, "JPEG", quality=92)
     return caminho
 
 
-def guardar_todas_imagens(imagens: dict, asin: str, pasta: str = "/tmp") -> dict:
-    """
-    Guarda os 3 formatos em disco.
-    Devolve dicionário com os caminhos de cada ficheiro.
-    """
+def guardar_todas_imagens(imagens: dict, asin: str,
+                          pasta: str = "/tmp") -> dict:
+    """Guarda os 3 formatos em disco e devolve os caminhos."""
     os.makedirs(pasta, exist_ok=True)
-    caminhos = {}
     mapeamento = {
         "quadrada":  f"oferta_{asin}_quadrada.jpg",
         "pinterest": f"oferta_{asin}_pinterest.jpg",
         "story":     f"oferta_{asin}_story.jpg",
     }
+    caminhos = {}
     for formato, nome_ficheiro in mapeamento.items():
         if formato in imagens:
             caminho = os.path.join(pasta, nome_ficheiro)
             imagens[formato].convert("RGB").save(caminho, "JPEG", quality=92)
             caminhos[formato] = caminho
             print(f"✅ Imagem gerada: {nome_ficheiro}")
-
     return caminhos
