@@ -87,36 +87,27 @@ def _colar_imagem_produto(canvas, img_produto, x, y, largura, altura):
 
 
 def _desenhar_badge(draw, cx, cy, raio, desconto_pct):
-    """Desenha o círculo de desconto."""
+    """Desenha o círculo de desconto — só percentagem, centrada."""
     draw.ellipse([cx - raio, cy - raio, cx + raio, cy + raio], fill=VERMELHO)
-    fonte_grande  = _carregar_fonte(int(raio * 0.44), negrito=True)
-    fonte_pequena = _carregar_fonte(int(raio * 0.25), negrito=True)
+    fonte = _carregar_fonte(int(raio * 0.52), negrito=True)
 
-    texto_pct = f"-{desconto_pct}%"
-    caixa = draw.textbbox((0, 0), texto_pct, font=fonte_grande)
+    texto = f"-{desconto_pct}%"
+    caixa = draw.textbbox((0, 0), texto, font=fonte)
+    texto_w = caixa[2] - caixa[0]
+    texto_h = caixa[3] - caixa[1]
     draw.text(
-        (cx - (caixa[2]-caixa[0])//2,
-         cy - (caixa[3]-caixa[1])//2 - int(raio * 0.1)),
-        texto_pct, font=fonte_grande, fill=BRANCO
+        (cx - texto_w // 2, cy - texto_h // 2),
+        texto, font=fonte, fill=BRANCO
     )
-
-    texto_poupa = "POUPA"
-    caixa2 = draw.textbbox((0, 0), texto_poupa, font=fonte_pequena)
-    draw.text(
-        (cx - (caixa2[2]-caixa2[0])//2, cy + int(raio * 0.36)),
-        texto_poupa, font=fonte_pequena, fill=BRANCO
-    )
-
 
 def _desenhar_rodape_simples(canvas, draw, y_inicio, largura, altura_total,
                               nome_canal, tamanho_fonte=28):
-    """Rodapé sem emojis — texto limpo com linha vermelha."""
+    """Rodapé com link do canal em vez do nome."""
     draw.rectangle([(0, y_inicio), (largura, altura_total)], fill=BRANCO)
     draw.line([(0, y_inicio), (largura, y_inicio)], fill=VERMELHO, width=3)
 
     fonte = _carregar_fonte(tamanho_fonte, negrito=True)
-    nome_limpo = _remover_emojis(nome_canal)
-    texto = f"{nome_limpo}"
+    texto = "t.me/poupamais_pt"
     caixa = draw.textbbox((0, 0), texto, font=fonte)
     draw.text(
         ((largura - (caixa[2]-caixa[0])) // 2, y_inicio + 8),
@@ -186,12 +177,11 @@ def criar_imagem_quadrada(titulo, preco_anterior, preco_promo,
 
     W, H = 1080, 1080
 
-    # Zonas
     RODAPE_H    = 60
     PRECOS_H    = 130
     TITULO_H    = 110
     SEPARADOR_H = 15
-    AREA_IMG_H  = H - RODAPE_H - PRECOS_H - TITULO_H - SEPARADOR_H  # ~765px
+    AREA_IMG_H  = H - RODAPE_H - PRECOS_H - TITULO_H - SEPARADOR_H
 
     canvas = Image.new("RGB", (W, H), BRANCO)
     draw   = ImageDraw.Draw(canvas)
@@ -210,7 +200,7 @@ def criar_imagem_quadrada(titulo, preco_anterior, preco_promo,
     SEP_Y = AREA_IMG_H + 8
     draw.line([(30, SEP_Y), (W - 30, SEP_Y)], fill=LINHA_SEP, width=2)
 
-    # Título (máx 2 linhas para caber no espaço)
+    # Título
     fonte_titulo = _carregar_fonte(30, negrito=True)
     linhas = textwrap.wrap(_remover_emojis(titulo)[:100], width=38)[:2]
     ty = SEP_Y + 12
@@ -234,9 +224,9 @@ def criar_imagem_quadrada(titulo, preco_anterior, preco_promo,
     _desenhar_rodape_simples(canvas, draw, H - RODAPE_H, W, H,
                               nome_canal, tamanho_fonte=22)
 
-    # Logo canto inferior esquerdo
+    # Logo canto inferior direito
     canvas = _adicionar_logo(canvas, tamanho=70, margem=15,
-                              posicao="inferior_esquerdo")
+                              posicao="inferior_direito")
 
     return canvas
 
