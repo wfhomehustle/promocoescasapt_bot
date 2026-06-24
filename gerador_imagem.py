@@ -116,7 +116,7 @@ def _desenhar_rodape_simples(canvas, draw, y_inicio, largura, altura_total,
 
     fonte = _carregar_fonte(tamanho_fonte, negrito=True)
     nome_limpo = _remover_emojis(nome_canal)
-    texto = f"{nome_limpo}  |  Amazon.es"
+    texto = f"{nome_limpo}"
     caixa = draw.textbbox((0, 0), texto, font=fonte)
     draw.text(
         ((largura - (caixa[2]-caixa[0])) // 2, y_inicio + 8),
@@ -182,7 +182,7 @@ def _adicionar_logo(canvas: Image.Image, tamanho: int = 80,
 
 def criar_imagem_quadrada(titulo, preco_anterior, preco_promo,
                           desconto_pct, url_imagem_produto,
-                          nome_canal="Poupa Mais PT") -> Image.Image:
+                          nome_canal="t.me/poupamais_pt") -> Image.Image:
 
     W, H        = 1080, 1350
     RODAPE_H    = 80
