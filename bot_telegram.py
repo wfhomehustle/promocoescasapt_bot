@@ -52,11 +52,7 @@ def formatar_legenda(oferta: dict) -> str:
         f"[Experimenta grátis 30 dias]({PRIME_LINK})"
     )
 
-    linhas.append(
-        "\n\n_Este canal contém links de afiliado da Amazon. "
-        "Como Afiliado Amazon, recebo uma remuneração por compras "
-        "que cumpram os requisitos aplicáveis._"
-    )
+    linhas.append("\n\n_#ad — links de afiliado Amazon_")
     linhas.append("\n#oferta #amazon #descontos #promoções #portugal")
 
     return "\n".join(linhas)
