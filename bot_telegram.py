@@ -43,15 +43,15 @@ def formatar_legenda(oferta: dict) -> str:
     else:
         linhas.append(f"✅ *Preço: {preco}*\n")
 
-    linhas.append(f"🛒 APROVEITA ANTES QUE ACABE: {link}")
+    linhas.append(f"🛒 APROVEITA JÁ: {link}")
 
     linhas.append(
         f"\n📦 *Já tens Amazon Prime?*\n"
-        f"Entrega rápida e gratuita em milhões de produtos.\n"
-        f"Experimenta grátis 30 dias: {PRIME_LINK}"
+        f"Entrega rápida e gratuita em milhões de produtos. Experimenta grátis 30 dias:\n"
+        f"{PRIME_LINK}"
     )
 
-    linhas.append("\n\n_#ad — links de afiliado Amazon_")
+    linhas.append("\n\n_#ad links de afiliado Amazon_")
     linhas.append("_Preços sujeitos a alteração_")
     linhas.append("#oferta #amazon #descontos #promoções #portugal")
 
