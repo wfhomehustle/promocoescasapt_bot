@@ -30,6 +30,7 @@ jobs:
           echo "TELEGRAM_CHANNEL_ID=${{ secrets.TELEGRAM_CHANNEL_ID }}" >> .env
           echo "AMAZON_ASSOCIATE_TAG=${{ secrets.AMAZON_ASSOCIATE_TAG }}" >> .env
           echo "NOME_CANAL=${{ secrets.NOME_CANAL }}" >> .env
+          echo "AMAZON_PRIME_LINK=${{ secrets.AMAZON_PRIME_LINK }}" >> .env
 
       - name: Publicar próximo da fila
         run: python publicar_da_fila.py
