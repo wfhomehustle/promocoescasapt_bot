@@ -66,5 +66,590 @@
       "Pack de 3 ou 5",
       "Roupa Desportiva Padel Corrida Ginásio Crossfit"
     ]
+  },
+  {
+    "asin": "LINK68632864",
+    "titulo": "Monopoly Panini Prizm",
+    "preco": "25,40 €",
+    "preco_anterior": "35,57 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/71lt+5nxtjL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4xKNJ6D",
+    "caracteristicas": [
+      "Copa do mundo da FIFA caixa de cartas de colecionáveis",
+      "Estrelas atuais e lendas da copa do mundo da FIFA",
+      "Presente perfeito para fãs de futebol"
+    ]
+  },
+  {
+    "asin": "LINK46395242",
+    "titulo": "Havaianas Top Tiras Mulher",
+    "preco": "15,06 €",
+    "preco_anterior": "24,39 €",
+    "desconto": "38",
+    "imagem": "https://m.media-amazon.com/images/I/81+hf5SUB2L._AC_SY395_.jpg",
+    "link": "https://amzn.to/4eqC19I",
+    "caracteristicas": [
+      "Durabilidade e flexibilidade",
+      "Leveza resistência à água e ao calor"
+    ]
+  },
+  {
+    "asin": "LINK99776962",
+    "titulo": "Boss Bonés para homem",
+    "preco": "26,74 €",
+    "preco_anterior": "50,82 €",
+    "desconto": "47",
+    "imagem": "https://m.media-amazon.com/images/I/71SZQM2eFyL._AC_SY606_.jpg",
+    "link": "https://amzn.to/4xT8LjJ",
+    "caracteristicas": [
+      "Lavagem à máquina",
+      "Fecho com Botão de pressão"
+    ]
+  },
+  {
+    "asin": "LINK17619366",
+    "titulo": "BOSS Relógio Cronógrafo de Quartzo para Homem",
+    "preco": "163,65 €",
+    "preco_anterior": "303,95 €",
+    "desconto": "46",
+    "imagem": "https://m.media-amazon.com/images/I/71Dvc2MZP+L._AC_SX466_.jpg",
+    "link": "https://amzn.to/4enKL0k",
+    "caracteristicas": [
+      "Coleção Runner com Bracelete de Aço Inoxidável ou de Silicone",
+      "Movimento cronógrafo com data preciso e desportivo",
+      "Resistência à água 5 atm"
+    ]
+  },
+  {
+    "asin": "LINK51024433",
+    "titulo": "LEGO Star Wars 75375 Falcão Milenar",
+    "preco": "61,49 €",
+    "preco_anterior": "86,40 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/817nj2XltKL._AC_SY450_.jpg",
+    "link": "https://amzn.to/4vEPZe4",
+    "caracteristicas": [
+      "Maquete para adultos de nave estelar colecionável com base e placa",
+      "Decoração de secretária",
+      "Presente para fãs de Star Wars"
+    ]
+  },
+  {
+    "asin": "LINK20991619",
+    "titulo": "Samsung Galaxy A56 5G 256GB",
+    "preco": "375,10 €",
+    "preco_anterior": "537,74 €",
+    "desconto": "30",
+    "imagem": "https://m.media-amazon.com/images/I/61kUvZHxnDL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4eB0vfb",
+    "caracteristicas": [
+      "8 GB RAM câmara 50 MP",
+      "Garantia Samsung 3 anos mais 1 ano",
+      "AMOLED FHD+ de 67 polegadas"
+    ]
+  },
+  {
+    "asin": "LINK63952425",
+    "titulo": "BISSELL 15585 SpotClean Pet Pro Portátil 750W",
+    "preco": "152,47 €",
+    "preco_anterior": "264,29 €",
+    "desconto": "42",
+    "imagem": "https://m.media-amazon.com/images/I/6105Hm79qgL._AC_SL1310_.jpg",
+    "link": "https://amzn.to/4b7lsgN",
+    "caracteristicas": [
+      "Aspirador de água de manchas com motor de 750 W",
+      "Ideal para animais de estimação",
+      "Depósitos de água removíveis fáceis de encher e esvaziar"
+    ]
+  },
+  {
+    "asin": "LINK75421936",
+    "titulo": "Tommee Tippee Biberão anticólicas Natural Start",
+    "preco": "9,14 €",
+    "preco_anterior": "14,22 €",
+    "desconto": "36",
+    "imagem": "https://m.media-amazon.com/images/I/51bOUg6oVoL._AC_SL1000_.jpg",
+    "link": "https://amzn.to/4g8X4yZ",
+    "caracteristicas": [
+      "Com tetina anatómica para aderência natural",
+      "Válvula anticólica",
+      "Embalagem de 2"
+    ]
+  },
+  {
+    "asin": "LINK38879814",
+    "titulo": "S1PRO (Upgrade de 2026) robô de piscina",
+    "preco": "121,98 €",
+    "preco_anterior": "162,63 €",
+    "desconto": "25",
+    "imagem": "https://m.media-amazon.com/images/I/71WF7LkJE+L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4oKiJQ5",
+    "caracteristicas": [
+      "120 min de autonomia",
+      "Limpa-fundos piscina sem cabo com motor duplo",
+      "Auto-estacionável para piscinas de fundo plano 95 m²"
+    ]
+  },
+  {
+    "asin": "LINK12014646",
+    "titulo": "Câmara exterior 2K+ Blink",
+    "preco": "107,99 €",
+    "preco_anterior": "379,98 €",
+    "desconto": "72",
+    "imagem": "https://m.media-amazon.com/images/I/41DnXgCRC9L._SL1500_.jpg",
+    "link": "https://amzn.to/43OOjTj",
+    "caracteristicas": [
+      "Segurança total em casa com resolução 2K",
+      "Inclui 4 câmaras com vista de corpo inteiro",
+      "Áudio bidirecional com cancelamento de ruído"
+    ]
+  },
+  {
+    "asin": "LINK2720286",
+    "titulo": "Philips Série 5400 Cafeteira super automática",
+    "preco": "422,86 €",
+    "preco_anterior": "640,40 €",
+    "desconto": "34",
+    "imagem": "https://m.media-amazon.com/images/I/61bIqkKjShL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4eH2xdI",
+    "caracteristicas": [
+      "Sistema de leite LatteGo",
+      "12 variedades de café",
+      "Ecrã intuitivo 4 perfis de utilizador"
+    ]
+  },
+  {
+    "asin": "LINK18440336",
+    "titulo": "Pepe Jeans Sapatilhas Joe Basic",
+    "preco": "38,39 €",
+    "preco_anterior": "71,06 €",
+    "desconto": "46",
+    "imagem": "https://m.media-amazon.com/images/I/51gN0kilHFL._AC_SY500_.jpg",
+    "link": "https://amzn.to/3SsVPRh",
+    "caracteristicas": []
+  },
+  {
+    "asin": "LINK30049051",
+    "titulo": "Hidrolimpadora de Alta Pressão 120 Bar",
+    "preco": "93,50 €",
+    "preco_anterior": "145,20 €",
+    "desconto": "36",
+    "imagem": "https://m.media-amazon.com/images/I/71hTBcLr0-L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3SogGVT",
+    "caracteristicas": [
+      "Caudal de 380 l/h",
+      "Área de Trabalho 30 m²/h",
+      "Inclui Mangueira de 7m Bomba de Aluminio Raio de Ação 12m"
+    ]
+  },
+  {
+    "asin": "LINK16810170",
+    "titulo": "Dodot Fraldas Bebé Sensitive Tamanho 4",
+    "preco": "56,40 €",
+    "preco_anterior": "80,58 €",
+    "desconto": "30",
+    "imagem": "https://m.media-amazon.com/images/I/81XPVAVymTL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3SFPxha",
+    "caracteristicas": [
+      "192 Fraldas + 4 de Oferta",
+      "Até 12 h de Proteção Antivazamento e Cuidado da Pele"
+    ]
+  },
+  {
+    "asin": "LINK43106265",
+    "titulo": "OKYUK Ar condicionado portátil",
+    "preco": "250,99 €",
+    "preco_anterior": "406,52 €",
+    "desconto": "38",
+    "imagem": "https://m.media-amazon.com/images/I/61izvkwJp8L._AC_SX466_.jpg",
+    "link": "https://amzn.to/3SJXhyJ",
+    "caracteristicas": [
+      "3 em 1 frigorífico ventosa e desumidifica",
+      "Cobertura de 15 - 20 m2",
+      "Com tubo de escape"
+    ]
+  },
+  {
+    "asin": "LINK20030549",
+    "titulo": "La Roche Posay Creme Protector Anti-idade 50ml",
+    "preco": "16,08 €",
+    "preco_anterior": "39,95 €",
+    "desconto": "60",
+    "imagem": "https://m.media-amazon.com/images/I/61n43CtE-jL._SL1500_.jpg",
+    "link": "https://amzn.to/4eZoc25",
+    "caracteristicas": [
+      "Fotocorrector de Uso Diario con SPF50",
+      "Corrige Rugas e Manchas",
+      "Fórmula com Cellox-B3 Tech"
+    ]
+  },
+  {
+    "asin": "LINK13991882",
+    "titulo": "Lefant M210 Pro Omni Robot Aspirador e lava-chão",
+    "preco": "304,95 €",
+    "preco_anterior": "999,99 €",
+    "desconto": "70",
+    "imagem": "https://m.media-amazon.com/images/I/61lWWm2XAbL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/44qSCUT",
+    "caracteristicas": [
+      "20 cm rolo de escovagem com auto-limpeza",
+      "Anticolisão mapeamento navegação LiDAR",
+      "App/Alexa/iWatch/2.4"
+    ]
+  },
+  {
+    "asin": "LINK76256952",
+    "titulo": "Philips Avent Monitor de bebés ligado com Wi-Fi",
+    "preco": "185,41 €",
+    "preco_anterior": "254,12 €",
+    "desconto": "27",
+    "imagem": "https://m.media-amazon.com/images/I/71wgTEkOmoL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4xNEoLc",
+    "caracteristicas": [
+      "Câmara HD de qualidade e visão noturna infravermelha",
+      "Deteção de choro áudio bidirecional",
+      "Tempo de deteção de 12 horas em modo ecológico"
+    ]
+  },
+  {
+    "asin": "LINK56059936",
+    "titulo": "KOORUI Monitor de 27 Polegadas Curvo",
+    "preco": "121,98 €",
+    "preco_anterior": "203,29 €",
+    "desconto": "40",
+    "imagem": "https://m.media-amazon.com/images/I/7160M6ZWEXL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4b9DBdV",
+    "caracteristicas": [
+      "Monitor Gaming 180HZ FHD 1080P 1500R DCI-P3 90% HDR",
+      "Eye Care VESA Adaptive Sync"
+    ]
+  },
+  {
+    "asin": "LINK61703396",
+    "titulo": "Monix Martín Berasategui Conjunto de 3 frigideiras",
+    "preco": "27,80 €",
+    "preco_anterior": "51,34 €",
+    "desconto": "46",
+    "imagem": "https://m.media-amazon.com/images/I/91YvwWCxigL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4xQQEec",
+    "caracteristicas": [
+      "Alumínio forjado com antiaderente sem PFOA",
+      "Aptas para máquina de lavar louça",
+      "Diâmetro de 18/22/26"
+    ]
+  },
+  {
+    "asin": "LINK14496640",
+    "titulo": "Hot Wheels Tubarão Mastiga Carros",
+    "preco": "16,01 €",
+    "preco_anterior": "25,40 €",
+    "desconto": "37",
+    "imagem": "https://m.media-amazon.com/images/I/81Mb53tpCnL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4uRzSZq",
+    "caracteristicas": [
+      "Guarda e transporta até 5 Carros",
+      "Rampa na parte traseira"
+    ]
+  },
+  {
+    "asin": "LINK92894163",
+    "titulo": "Play-Doh Barbie desfile de moda",
+    "preco": "15,24 €",
+    "preco_anterior": "40,65 €",
+    "desconto": "63",
+    "imagem": "https://m.media-amazon.com/images/I/81DwIqKfbjL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3SEGrkL",
+    "caracteristicas": [
+      "Inclui uma boneca Barbie autêntica",
+      "Fácil e divertido criar roupas Play-Doh para a boneca",
+      "Estúdio de design e passarela 2 em 1"
+    ]
+  },
+  {
+    "asin": "LINK66598415",
+    "titulo": "Mattel Games - UNO Original",
+    "preco": "6,38 €",
+    "preco_anterior": "12,19 €",
+    "desconto": "48",
+    "imagem": "https://m.media-amazon.com/images/I/71IC1KLr+uL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4oNBfqL",
+    "caracteristicas": [
+      "Jogo de Cartas Familiar De 2 a 10 Jogadores",
+      "Baralho Multicolor de 112 Cartas",
+      "Para Crianças e Adultos"
+    ]
+  },
+  {
+    "asin": "LINK17353188",
+    "titulo": "Sloosh 2 Redes flutuadoras de piscina para adultos",
+    "preco": "19,30 €",
+    "preco_anterior": "23,37 €",
+    "desconto": "17",
+    "imagem": "https://m.media-amazon.com/images/I/91NOiyOx5ML._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4eqA4Kt",
+    "caracteristicas": [
+      "Flutuadores insufláveis multiusos 4 em 1 para piscina",
+      "Assento de tecido de malha fresca",
+      "Pequeno quando está dobrado fácil de transportar"
+    ]
+  },
+  {
+    "asin": "LINK99907494",
+    "titulo": "Supersoaker Twin Tide Lançador de água Hasbro",
+    "preco": "10,16 €",
+    "preco_anterior": "18,29 €",
+    "desconto": "44",
+    "imagem": "https://m.media-amazon.com/images/I/71qUAGOSfeL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4uWZSD4",
+    "caracteristicas": [
+      "ENCHARQUE COM 2 JATOS",
+      "FÁCIL DE ENCHER FÁCIL DE LANÇAR",
+      "Brinquedo divertido para brincar com água"
+    ]
+  },
+  {
+    "asin": "LINK66717304",
+    "titulo": "Geox J Sandal Costarei Gi",
+    "preco": "36,99 €",
+    "preco_anterior": "55,90 €",
+    "desconto": "34",
+    "imagem": "https://m.media-amazon.com/images/I/51gbP6uUr6L._AC_SY500_.jpg",
+    "link": "https://amzn.to/44pt4Yj",
+    "caracteristicas": [
+      "Respirável e confortável",
+      "Disponível do tamanho 24 a 39"
+    ]
+  },
+  {
+    "asin": "LINK39482451",
+    "titulo": "LEGO 10696 Caixa clássica",
+    "preco": "24,39 €",
+    "preco_anterior": "30,49 €",
+    "desconto": "20",
+    "imagem": "https://m.media-amazon.com/images/I/81riurHgf+L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4xN06za",
+    "caracteristicas": [
+      "Presente ideal para meninos e meninas a partir de 4 anos",
+      "Caixa clássica média com base verde carros e animais",
+      "Peças LEGO com 35 cores diferentes"
+    ]
+  },
+  {
+    "asin": "LINK53570714",
+    "titulo": "Rolo de relva artificial de 40 mm (1x5metros)",
+    "preco": "53,05 €",
+    "preco_anterior": "74,76 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/71zFdw7edzL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3SsYRoz",
+    "caracteristicas": [
+      "Ideal para deitar andar descalço para áreas de brincar infantis",
+      "Adequado para animais de estimação e seguro para crianças",
+      "Preparado para sol intenso (proteção UV) e uso familiar."
+    ]
+  },
+  {
+    "asin": "LINK62197774",
+    "titulo": "Outsunny Guarda-sol de jardim 295 x 250 cm",
+    "preco": "43,96 €",
+    "preco_anterior": "60,98 €",
+    "desconto": "28",
+    "imagem": "https://m.media-amazon.com/images/I/61ZTNkCiqfL._AC_SX679_.jpg",
+    "link": "https://amzn.to/44o7NhI",
+    "caracteristicas": [
+      "Guarda-sol exterior com mecanismo de inclinação",
+      "Poste desmontável de metal para terraço piscina pátio"
+    ]
+  },
+  {
+    "asin": "LINK83626207",
+    "titulo": "Yaheetech Tenda dobrável de 3 x 3 m",
+    "preco": "78,44 €",
+    "preco_anterior": "101,65 €",
+    "desconto": "23",
+    "imagem": "https://m.media-amazon.com/images/I/717EsqyRRSL._AC_SL1000_.jpg",
+    "link": "https://amzn.to/44sqgK0",
+    "caracteristicas": [
+      "Gazebo exterior impermeável e antivento para 8 - 10 pessoas",
+      "Tenda de jardim com ventilação e bolsa de transporte"
+    ]
+  },
+  {
+    "asin": "LINK95067515",
+    "titulo": "WORX Motosserra sem fios 20V",
+    "preco": "76,19 €",
+    "preco_anterior": "137,22 €",
+    "desconto": "44",
+    "imagem": "https://m.media-amazon.com/images/I/710bEaf26bL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4oLYmSv",
+    "caracteristicas": [
+      "Cortes rápidos e limpos",
+      "AUTO TENSÃO E LUBRIFICAÇÃO"
+    ]
+  },
+  {
+    "asin": "LINK27883495",
+    "titulo": "SONGMICS Cadeira de baloiço com apoio de braços",
+    "preco": "74,16 €",
+    "preco_anterior": "103,68 €",
+    "desconto": "28",
+    "imagem": "https://m.media-amazon.com/images/I/71Ubk46salL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4uYLjPl",
+    "caracteristicas": [
+      "Apoio para os pés ajustável em 5 posições",
+      "Capacidade de carga máxima 150 kg",
+      "Em madeira de bétula ideal para quarto ou sala de estar"
+    ]
+  },
+  {
+    "asin": "LINK25076158",
+    "titulo": "Medi Partners Ninho para Bebé Recém-Nascido Redutor de Berço",
+    "preco": "33,62 €",
+    "preco_anterior": "51,83 €",
+    "desconto": "35",
+    "imagem": "https://m.media-amazon.com/images/I/81+z+Gfk-KL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4g4BL1u",
+    "caracteristicas": [
+      "Dimensões 100x60x15 ideal para viagem ou Partilha de Leito",
+      "Anti-cólicas Bilateral Bebés",
+      "100% Algodão Gofre"
+    ]
+  },
+  {
+    "asin": "LINK10502862",
+    "titulo": "Campingaz CV 470 Plus cartucho de gás",
+    "preco": "6,09 €",
+    "preco_anterior": "10,66 €",
+    "desconto": "43",
+    "imagem": "https://m.media-amazon.com/images/I/71Nl9NNJ-UL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/3SG7Rqs",
+    "caracteristicas": [
+      "Cartucho de válvula com tecnologia patenteada Easy Clic Plus",
+      "Adequado para fogões grelhas ou candeeiros de campismo Campingaz"
+    ]
+  },
+  {
+    "asin": "LINK81920203",
+    "titulo": "28Pcs Utensílios de Churrasco de Aço Inoxidável",
+    "preco": "24,30 €",
+    "preco_anterior": "29,99 €",
+    "desconto": "19",
+    "imagem": "https://m.media-amazon.com/images/I/61f+ieMbRLL._AC_SL1200_.jpg",
+    "link": "https://amzn.to/3SKgPD7",
+    "caracteristicas": [
+      "Acessórios de Churrasco a Gás e Carvão para Camping em Estojo Portátil",
+      "Kit Prático de Utensílios de Churrasco",
+      "Presente perfeito de churrasco para  fãs de churrasco"
+    ]
+  },
+  {
+    "asin": "LINK43169407",
+    "titulo": "OUTSUNNY - Estufa com cobertura",
+    "preco": "89,86 €",
+    "preco_anterior": "131,12 €",
+    "desconto": "31",
+    "imagem": "https://m.media-amazon.com/images/I/71YsRrre37L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4etM5yI",
+    "caracteristicas": [
+      "Porta  e janelas enroláveis",
+      "Estrutura de metal 445 x 300 x 205cm",
+      "Para jardim pátio casinha mosquiteira plantas flores"
+    ]
+  },
+  {
+    "asin": "LINK78161103",
+    "titulo": "Candeeiro anti-mosquitos 20 W",
+    "preco": "30,49 €",
+    "preco_anterior": "46,75 €",
+    "desconto": "35",
+    "imagem": "https://m.media-amazon.com/images/I/718aQKgmp+L._AC_SL1500_.jpg",
+    "link": "https://amzn.to/44sH2ss",
+    "caracteristicas": [
+      "Candeeiro anti-mosquitos exterior interior IPX4 impermeável",
+      "Adequado para jardins salas de estar campismo",
+      "Cabo de 1.5 m"
+    ]
+  },
+  {
+    "asin": "LINK24298577",
+    "titulo": "NIVEA SUN Babies & Kids Sensitive Roll-on FP 50",
+    "preco": "7,75 €",
+    "preco_anterior": "10,16 €",
+    "desconto": "24",
+    "imagem": "https://m.media-amazon.com/images/I/71ADvVnXbCL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4esx7sX",
+    "caracteristicas": [
+      "Protetor solar infantil extra resistente à água",
+      "Indicado para peles ATÓPICAS",
+      "Reduz o risco de alergias induzidas pelo sol"
+    ]
+  },
+  {
+    "asin": "LINK51506380",
+    "titulo": "Mobvoi SE 3 em 1Passadeira Dobrável",
+    "preco": "178,45 €",
+    "preco_anterior": "335,45 €",
+    "desconto": "47",
+    "imagem": "https://m.media-amazon.com/images/I/61czLod0KcL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4f28LpS",
+    "caracteristicas": [
+      "Passadeira Dobrável com Inclinação de 6%",
+      "Controlo Remoto e Ecrã LED",
+      "Smart IA com a App TicSports"
+    ]
+  },
+  {
+    "asin": "LINK36358216",
+    "titulo": "Calvin Klein Sneaker para Homem",
+    "preco": "57,43 €",
+    "preco_anterior": "101,55 €",
+    "desconto": "43",
+    "imagem": "https://m.media-amazon.com/images/I/61dhC9utlqL._AC_SX500_.jpg",
+    "link": "https://amzn.to/4eLZXDz",
+    "caracteristicas": [
+      "Design Premium Ajuste perfeito",
+      "Sola Cupsole Homem Classic Laceup de Pele"
+    ]
+  },
+  {
+    "asin": "LINK90503546",
+    "titulo": "L'OR Espresso Cápsulas de Café Ristretto",
+    "preco": "13,06 €",
+    "preco_anterior": "20,90 €",
+    "desconto": "38",
+    "imagem": "https://m.media-amazon.com/images/I/71hAOIraKqL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/43Pve3k",
+    "caracteristicas": [
+      "50 Cápsulas Compatíveis Nespresso (R)",
+      "Cápsulas Ristretto Intensidade 11"
+    ]
+  },
+  {
+    "asin": "LINK96684971",
+    "titulo": "Asmodee | Dixit Jogo de tabuleiro",
+    "preco": "24,18 €",
+    "preco_anterior": "33,53 €",
+    "desconto": "28",
+    "imagem": "https://m.media-amazon.com/images/I/61szjv2k5tL._AC_SY450_.jpg",
+    "link": "https://amzn.to/3Si29Ls",
+    "caracteristicas": [
+      "Jogo de Imaginação e Criatividade Vencedor de Vários Prémios",
+      "De 3 a 8 Jogadores | 30 Minutos por Partida",
+      "Em Português"
+    ]
+  },
+  {
+    "asin": "LINK99835408",
+    "titulo": "Munchkin 2 Copos de Aprendizagem para bebés",
+    "preco": "13,81 €",
+    "preco_anterior": "17,27 €",
+    "desconto": "20",
+    "imagem": "https://m.media-amazon.com/images/I/61ewyRxXOXL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/4eOuqAW",
+    "caracteristicas": [
+      "Copo Antiderramamento Livre de BPA",
+      "Para Bebés a Partir de 6 Meses e Crianças Pequenas"
+    ]
   }
 ]
