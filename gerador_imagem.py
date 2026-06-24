@@ -182,14 +182,16 @@ def _adicionar_logo(canvas: Image.Image, tamanho: int = 80,
 
 def criar_imagem_quadrada(titulo, preco_anterior, preco_promo,
                           desconto_pct, url_imagem_produto,
-                          nome_canal="t.me/poupamais_pt") -> Image.Image:
+                          nome_canal="Poupa Mais PT") -> Image.Image:
 
-    W, H        = 1080, 1350
-    RODAPE_H    = 80
-    PRECOS_H    = 200
-    TITULO_H    = 160
-    SEPARADOR_H = 20
-    AREA_IMG_H  = H - RODAPE_H - PRECOS_H - TITULO_H - SEPARADOR_H
+    W, H = 1080, 1080
+
+    # Zonas
+    RODAPE_H    = 60
+    PRECOS_H    = 130
+    TITULO_H    = 110
+    SEPARADOR_H = 15
+    AREA_IMG_H  = H - RODAPE_H - PRECOS_H - TITULO_H - SEPARADOR_H  # ~765px
 
     canvas = Image.new("RGB", (W, H), BRANCO)
     draw   = ImageDraw.Draw(canvas)
@@ -202,42 +204,41 @@ def criar_imagem_quadrada(titulo, preco_anterior, preco_promo,
 
     # Badge de desconto
     if desconto_pct > 0:
-        _desenhar_badge(draw, W - 112, 112, 72, desconto_pct)
+        _desenhar_badge(draw, W - 90, 90, 60, desconto_pct)
 
     # Linha separadora
-    SEP_Y = AREA_IMG_H + 10
-    draw.line([(40, SEP_Y), (W - 40, SEP_Y)], fill=LINHA_SEP, width=2)
+    SEP_Y = AREA_IMG_H + 8
+    draw.line([(30, SEP_Y), (W - 30, SEP_Y)], fill=LINHA_SEP, width=2)
 
-    # Título
-    fonte_titulo = _carregar_fonte(36, negrito=True)
-    linhas = textwrap.wrap(_remover_emojis(titulo)[:120], width=34)[:3]
-    ty = SEP_Y + 20
+    # Título (máx 2 linhas para caber no espaço)
+    fonte_titulo = _carregar_fonte(30, negrito=True)
+    linhas = textwrap.wrap(_remover_emojis(titulo)[:100], width=38)[:2]
+    ty = SEP_Y + 12
     for linha in linhas:
-        draw.text((60, ty), linha, font=fonte_titulo, fill=PRETO)
-        ty += 48
+        draw.text((50, ty), linha, font=fonte_titulo, fill=PRETO)
+        ty += 40
 
     # Preços
-    Y_PRECO = AREA_IMG_H + SEPARADOR_H + TITULO_H + 20
+    Y_PRECO = AREA_IMG_H + SEPARADOR_H + TITULO_H + 5
     if preco_anterior and desconto_pct > 0:
-        _texto_riscado(draw, 60, Y_PRECO, preco_anterior,
-                       _carregar_fonte(36), CINZENTO_MEDIO)
-        y_promo = Y_PRECO + 55
+        _texto_riscado(draw, 50, Y_PRECO, preco_anterior,
+                       _carregar_fonte(28), CINZENTO_MEDIO)
+        y_promo = Y_PRECO + 42
     else:
         y_promo = Y_PRECO
 
-    draw.text((60, y_promo), preco_promo,
-              font=_carregar_fonte(96, negrito=True), fill=DOURADO_ESCURO)
+    draw.text((50, y_promo), preco_promo,
+              font=_carregar_fonte(72, negrito=True), fill=DOURADO_ESCURO)
 
     # Rodapé
     _desenhar_rodape_simples(canvas, draw, H - RODAPE_H, W, H,
-                              nome_canal, tamanho_fonte=28)
+                              nome_canal, tamanho_fonte=22)
 
-    # Logo canto inferior esquerdo, por cima do rodapé
-    canvas = _adicionar_logo(canvas, tamanho=90, margem=20,
+    # Logo canto inferior esquerdo
+    canvas = _adicionar_logo(canvas, tamanho=70, margem=15,
                               posicao="inferior_esquerdo")
 
     return canvas
-
 
 # ─────────────────────────────────────────────
 # FORMATO 2 — Pinterest
