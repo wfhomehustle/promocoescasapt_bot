@@ -1,1 +1,98 @@
-[]
+[
+  {
+    "asin": "LINK14658425",
+    "titulo": "XIAOMI REDMI Note 15 Pro+ 5G",
+    "preco": "321,23 €",
+    "preco_anterior": "508,16 €",
+    "desconto": "37",
+    "imagem": "https://m.media-amazon.com/images/I/61s1laiSWIL._AC_SL1500_.jpg",
+    "link": "https://amzn.to/43PpMgX",
+    "caracteristicas": [
+      "Ecrã AMOLED 683\" 15 K",
+      "Snapdragon 7s Gen 4",
+      "Câmara de 200 MP"
+    ]
+  },
+  {
+    "asin": "LINK44769442",
+    "titulo": "FILA Sutiã desportivo para mulher",
+    "preco": "11,18 €",
+    "preco_anterior": "22,31 €",
+    "desconto": "50",
+    "imagem": "https://m.media-amazon.com/images/I/71Cfg7ASXrL._AC_SX679_.jpg",
+    "link": "https://amzn.to/4eGrW7t",
+    "caracteristicas": [
+      "Roupa desportiva para mulher macia e confortável",
+      "Sem fecho e sem aros",
+      "Macio e transpirável"
+    ]
+  },
+  {
+    "asin": "LINK47246061",
+    "titulo": "Geox B Sandal Fusbetto Gi",
+    "preco": "23,86 €",
+    "preco_anterior": "45,74 €",
+    "desconto": "48",
+    "imagem": "https://m.media-amazon.com/images/I/51QxGF0f7cL._AC_SY500_.jpg",
+    "link": "https://amzn.to/4vt7vCb",
+    "caracteristicas": [
+      "Rápido e fácil de colocar",
+      "Calçado leve",
+      "Fecho Ripfit"
+    ]
+  },
+  {
+    "asin": "LINK25611363",
+    "titulo": "Disney Teen Maleta de Cabina",
+    "preco": "65,04 €",
+    "preco_anterior": "86,41 €",
+    "desconto": "25",
+    "imagem": "https://m.media-amazon.com/images/I/61Imj+-F0XL._AC_SX679_.jpg",
+    "link": "https://amzn.to/4xNbBX8",
+    "caracteristicas": [
+      "Mala de cabine infantil de 38 x 55 x 20 cm",
+      "Design oficial Disney Minnie Mouse",
+      "Capacidade de 35 L Resistente e leve"
+    ]
+  },
+  {
+    "asin": "LINK23325008",
+    "titulo": "Swarovski Una Angelic Colección pulseira",
+    "preco": "55,90 €",
+    "preco_anterior": "86,41 €",
+    "desconto": "35",
+    "imagem": "https://m.media-amazon.com/images/I/61KQAZ8FfhL._AC_SY500_.jpg",
+    "link": "https://amzn.to/4ak8xYG",
+    "caracteristicas": [
+      "Banhado a ródio branco",
+      "Fecho garra de lagosta"
+    ]
+  },
+  {
+    "asin": "LINK42319958",
+    "titulo": "NORTIV 8 Sapatilhas para mulherTrekking",
+    "preco": "45,95 €",
+    "preco_anterior": "60,98 €",
+    "desconto": "25",
+    "imagem": "https://m.media-amazon.com/images/I/71lN+magLyL._AC_SY500_.jpg",
+    "link": "https://amzn.to/3SqTcPU",
+    "caracteristicas": [
+      "Sapatos de caminhada botas de montanha",
+      "Antiderrapantes leves e respiráveis"
+    ]
+  },
+  {
+    "asin": "LINK36218020",
+    "titulo": "DANISH ENDURANCE Meias de desporto unisexo",
+    "preco": "17,74 €",
+    "preco_anterior": "30,44 €",
+    "desconto": "42",
+    "imagem": "https://m.media-amazon.com/images/I/71FQcSQ0-5L._AC_SX522_.jpg",
+    "link": "https://amzn.to/43VoJMp",
+    "caracteristicas": [
+      "Meias de Cano Médio",
+      "Pack de 3 ou 5",
+      "Roupa Desportiva Padel Corrida Ginásio Crossfit"
+    ]
+  }
+]
