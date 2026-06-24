@@ -52,7 +52,7 @@ def formatar_legenda(oferta: dict) -> str:
     )
 
     linhas.append("\n\n_#ad — links de afiliado Amazon_")
-    linhas.append("Preços sujeitos a alteração")
+    linhas.append("_Preços sujeitos a alteração_")
     linhas.append("#oferta #amazon #descontos #promoções #portugal")
 
     return "\n".join(linhas)
