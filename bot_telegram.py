@@ -6,9 +6,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BOT_TOKEN  = os.getenv("TELEGRAM_BOT_TOKEN")
-CANAL_ID   = os.getenv("TELEGRAM_CHANNEL_ID")
-NOME_CANAL = os.getenv("NOME_CANAL", "Poupa Mais PT 🇵🇹")
+BOT_TOKEN        = os.getenv("TELEGRAM_BOT_TOKEN")
+CANAL_ID         = os.getenv("TELEGRAM_CHANNEL_ID")
+NOME_CANAL       = os.getenv("NOME_CANAL", "Poupa Mais PT")
+PRIME_LINK       = os.getenv("AMAZON_PRIME_LINK", "https://www.amazon.es/prime")
 
 
 def _etiqueta_desconto(pct: int) -> str:
@@ -44,8 +45,15 @@ def formatar_legenda(oferta: dict) -> str:
         linhas.append(f"🏷️ *Preço: {preco}*\n")
 
     linhas.append(f"🛒 [Comprar na Amazon]({link})")
+
     linhas.append(
-        "\n_Este canal contém links de afiliado da Amazon. "
+        f"\n📦 *Tens Amazon Prime?*\n"
+        f"Entrega rápida e gratuita neste e em milhões de produtos.\n"
+        f"[Experimenta grátis 30 dias]({PRIME_LINK})"
+    )
+
+    linhas.append(
+        "\n\n_Este canal contém links de afiliado da Amazon. "
         "Como Afiliado Amazon, recebo uma remuneração por compras "
         "que cumpram os requisitos aplicáveis._"
     )
@@ -55,15 +63,15 @@ def formatar_legenda(oferta: dict) -> str:
 
 
 def publicar_oferta(oferta: dict, caminho_imagem: str) -> bool:
-    bot = Bot(token=BOT_TOKEN)
+    bot     = Bot(token=BOT_TOKEN)
     legenda = formatar_legenda(oferta)
     try:
         with open(caminho_imagem, "rb") as foto:
             bot.send_photo(
-                chat_id=CANAL_ID,
-                photo=foto,
-                caption=legenda,
-                parse_mode=ParseMode.MARKDOWN,
+                chat_id    = CANAL_ID,
+                photo      = foto,
+                caption    = legenda,
+                parse_mode = ParseMode.MARKDOWN,
             )
         print(f"✅ Publicado: {oferta.get('titulo','')[:55]}")
         return True
