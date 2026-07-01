@@ -1,19 +1,5 @@
 [
   {
-    "asin": "LINK37671837",
-    "titulo": "Philips i9000 Prestige Ultra",
-    "preco": "304,95 €",
-    "preco_anterior": "508,25 €",
-    "desconto": "40",
-    "imagem": "https://m.media-amazon.com/images/I/81hxZVg66TL._AC_SL1500_.jpg",
-    "link": "https://amzn.to/4bdaMx9",
-    "caracteristicas": [
-      "Máquina de barbear elétrica para homem a seco e molhado",
-      "tecnologia SkinIQ Pro",
-      "base de carregamento e estojo premium"
-    ]
-  },
-  {
     "asin": "LINK30127898",
     "titulo": "BLACK+DECKER 710W Berbequim de percussão",
     "preco": "35,57 €",
