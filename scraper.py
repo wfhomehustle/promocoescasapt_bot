@@ -1,7 +1,7 @@
 # scraper.py
 """
-Lê links.txt, resolve links amzn.to para amazon.es,
-faz scraping de cada produto e gera produtos_novos.csv.
+Lê links.txt, resolve links amzn.to, limpa o URL,
+faz scraping e gera/actualiza produtos_novos.csv.
 """
 
 import os
@@ -15,228 +15,305 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ASSOCIATE_TAG   = os.getenv("AMAZON_ASSOCIATE_TAG", "")
-FICHEIRO_LINKS  = "links.txt"
-FICHEIRO_CSV    = "produtos_novos.csv"
-CABECALHO       = [
+ASSOCIATE_TAG  = os.getenv("AMAZON_ASSOCIATE_TAG", "")
+FICHEIRO_LINKS = "links.txt"
+FICHEIRO_CSV   = "produtos_novos.csv"
+CABECALHO      = [
     "titulo", "preco", "preco_anterior", "desconto",
     "imagem", "link",
     "caracteristica1", "caracteristica2", "caracteristica3"
 ]
 
-# Headers para simular um browser real
 HEADERS_LIST = [
     {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/124.0.0.0 Safari/537.36",
-        "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.8",
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        ),
+        "Accept-Language": "es-ES,es;q=0.9,pt;q=0.8",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Encoding": "gzip, deflate, br",
         "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
     },
     {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/123.0.0.0 Safari/537.36",
-        "Accept-Language": "pt-PT,pt;q=0.9",
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/123.0.0.0 Safari/537.36"
+        ),
+        "Accept-Language": "es-ES,es;q=0.9",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Encoding": "gzip, deflate, br",
         "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
     },
 ]
 
 
-def resolver_link(url_curto: str) -> str:
-    """Resolve amzn.to para o URL completo amazon.es."""
-    try:
-        resp = requests.get(
-            url_curto,
-            headers=random.choice(HEADERS_LIST),
-            allow_redirects=True,
-            timeout=15
-        )
-        return resp.url
-    except Exception as e:
-        print(f"⚠️ Erro ao resolver {url_curto}: {e}")
-        return url_curto
-
-
 def extrair_asin(url: str) -> str | None:
-    """Extrai o ASIN do URL completo."""
+    """Extrai o ASIN de qualquer URL Amazon."""
     padrao = re.search(
-        r"/(?:dp|gp/product)/([A-Z0-9]{10})", url, re.IGNORECASE
+        r"/(?:dp|gp/product|product)/([A-Z0-9]{10})",
+        url, re.IGNORECASE
     )
     return padrao.group(1).upper() if padrao else None
+
+
+def limpar_url(url: str) -> str:
+    """Constrói URL limpo amazon.es/dp/ASIN sem parâmetros."""
+    asin = extrair_asin(url)
+    if asin:
+        return f"https://www.amazon.es/dp/{asin}"
+    return url
 
 
 def gerar_link_afiliado(asin: str) -> str:
     return f"https://www.amazon.es/dp/{asin}?tag={ASSOCIATE_TAG}"
 
 
-def limpar_preco(texto: str) -> str:
-    """Extrai apenas o número do texto do preço."""
-    texto = texto.replace("\xa0", " ").strip()
-    padrao = re.search(r"[\d]+[.,][\d]+", texto)
-    return padrao.group(0).replace(",", ".") if padrao else ""
-
-
-def fazer_scraping(url_completo: str) -> dict | None:
-    """Faz scraping da página do produto Amazon."""
+def resolver_e_limpar(url_curto: str) -> tuple[str, str | None]:
+    """
+    Resolve amzn.to → URL completo → extrai ASIN → URL limpo.
+    Devolve (url_limpo, asin).
+    """
     try:
-        time.sleep(random.uniform(2, 5))  # pausa aleatória entre pedidos
+        session = requests.Session()
+        resp = session.get(
+            url_curto,
+            headers=random.choice(HEADERS_LIST),
+            allow_redirects=True,
+            timeout=15
+        )
+        url_resolvido = resp.url
+        print(f"  → Resolvido: {url_resolvido[:80]}")
+
+        asin = extrair_asin(url_resolvido)
+        if not asin:
+            # Tenta extrair do histórico de redirects
+            for r in resp.history:
+                asin = extrair_asin(r.url)
+                if asin:
+                    break
+
+        if asin:
+            url_limpo = f"https://www.amazon.es/dp/{asin}"
+            print(f"  → URL limpo: {url_limpo}")
+            return url_limpo, asin
+        else:
+            print(f"  ⚠️ ASIN não encontrado no URL resolvido")
+            return url_resolvido, None
+
+    except Exception as e:
+        print(f"  ⚠️ Erro ao resolver: {e}")
+        return url_curto, None
+
+
+def limpar_preco(texto: str) -> str:
+    """Extrai número do preço, ex: '39,99 €' → '39.99'"""
+    texto = texto.replace("\xa0", " ").replace("€", "").strip()
+    padrao = re.search(r"(\d+)[,.](\d{2})", texto)
+    if padrao:
+        return f"{padrao.group(1)}.{padrao.group(2)}"
+    padrao2 = re.search(r"(\d+)", texto)
+    if padrao2:
+        return padrao2.group(1)
+    return ""
+
+
+def fazer_scraping(url_limpo: str) -> dict | None:
+    """Faz scraping da página produto Amazon com URL limpo."""
+    try:
+        time.sleep(random.uniform(3, 6))
+        session = requests.Session()
         headers = random.choice(HEADERS_LIST)
-        resp = requests.get(url_completo, headers=headers, timeout=15)
+        headers["Referer"] = "https://www.amazon.es/"
+
+        resp = session.get(url_limpo, headers=headers, timeout=20)
+        print(f"  → HTTP status: {resp.status_code}")
 
         if resp.status_code != 200:
-            print(f"⚠️ Status {resp.status_code} para {url_completo}")
+            print(f"  ⚠️ Página não acessível (status {resp.status_code})")
+            return None
+
+        # Verifica se foi redirecccionado para CAPTCHA
+        if "robot" in resp.url or "captcha" in resp.text.lower()[:500]:
+            print(f"  ⚠️ CAPTCHA detectado — Amazon bloqueou o pedido")
             return None
 
         soup = BeautifulSoup(resp.content, "html.parser")
 
         dados = {}
 
-        # Título
-        titulo_el = (
-            soup.find("span", {"id": "productTitle"}) or
-            soup.find("h1", {"id": "title"})
-        )
+        # ── Título ──────────────────────────────────────────
+        seletores_titulo = [
+            ("span", {"id": "productTitle"}),
+            ("span", {"id": "title"}),
+            ("h1",   {"id": "title"}),
+            ("h1",   {"class": "a-size-large"}),
+        ]
+        titulo_el = None
+        for tag, attrs in seletores_titulo:
+            titulo_el = soup.find(tag, attrs)
+            if titulo_el:
+                break
+
         if not titulo_el:
-            print(f"⚠️ Título não encontrado: {url_completo}")
+            titulo_el = soup.find("h1")
+
+        if not titulo_el:
+            print(f"  ⚠️ Título não encontrado")
+            # Debug: mostra o início do HTML para diagnóstico
+            print(f"  Debug HTML: {resp.text[:300]}")
             return None
+
         dados["titulo"] = titulo_el.get_text().strip()[:150]
+        print(f"  → Título: {dados['titulo'][:60]}")
 
-        # Preço actual
-        preco_el = (
-            soup.find("span", {"class": "a-price-whole"}) or
-            soup.find("span", {"id": "priceblock_ourprice"}) or
-            soup.find("span", {"id": "priceblock_dealprice"}) or
-            soup.find("span", {"class": "a-offscreen"})
-        )
-        if preco_el:
-            preco_texto = preco_el.get_text().strip()
-            # Tenta também apanhar os decimais
-            preco_frac = soup.find("span", {"class": "a-price-fraction"})
-            if preco_frac and "a-price-whole" in str(preco_el):
-                preco_texto = preco_texto.rstrip(".") + "." + preco_frac.get_text().strip()
-            dados["preco"] = limpar_preco(preco_texto)
-        else:
-            dados["preco"] = ""
+        # ── Preço actual ─────────────────────────────────────
+        preco_str = ""
 
-        # Preço anterior (riscado)
-        preco_ant_el = (
-            soup.find("span", {"class": "a-price a-text-price"}) or
-            soup.find("span", {"data-a-strike": "true"}) or
-            soup.find("span", {"class": "priceBlockStrikePriceString"})
-        )
-        if preco_ant_el:
-            span = preco_ant_el.find("span", {"class": "a-offscreen"})
-            texto_ant = span.get_text() if span else preco_ant_el.get_text()
-            dados["preco_anterior"] = limpar_preco(texto_ant)
-        else:
-            dados["preco_anterior"] = ""
+        # Método 1: bloco de preço principal
+        preco_bloco = soup.find("span", {"class": "a-price"})
+        if preco_bloco:
+            offscreen = preco_bloco.find("span", {"class": "a-offscreen"})
+            if offscreen:
+                preco_str = limpar_preco(offscreen.get_text())
 
-        # Desconto
+        # Método 2: preço inteiro + fracção
+        if not preco_str:
+            whole = soup.find("span", {"class": "a-price-whole"})
+            frac  = soup.find("span", {"class": "a-price-fraction"})
+            if whole:
+                w = whole.get_text().strip().replace(".", "").replace(",", "")
+                f = frac.get_text().strip() if frac else "00"
+                preco_str = f"{w}.{f}"
+
+        # Método 3: IDs específicos
+        if not preco_str:
+            for id_preco in ["priceblock_ourprice", "priceblock_dealprice",
+                              "priceblock_saleprice"]:
+                el = soup.find("span", {"id": id_preco})
+                if el:
+                    preco_str = limpar_preco(el.get_text())
+                    break
+
+        dados["preco"] = preco_str
+        print(f"  → Preço: {preco_str}")
+
+        # ── Preço anterior (riscado) ──────────────────────────
+        preco_ant_str = ""
+
+        seletores_ant = [
+            ("span", {"class": "a-price a-text-price"}),
+            ("span", {"data-a-strike": "true"}),
+            ("span", {"class": "priceBlockStrikePriceString"}),
+            ("span", {"id": "listPrice"}),
+        ]
+        for tag, attrs in seletores_ant:
+            el = soup.find(tag, attrs)
+            if el:
+                offscreen = el.find("span", {"class": "a-offscreen"})
+                texto = offscreen.get_text() if offscreen else el.get_text()
+                preco_ant_str = limpar_preco(texto)
+                if preco_ant_str:
+                    break
+
+        dados["preco_anterior"] = preco_ant_str
+        print(f"  → Preço anterior: {preco_ant_str}")
+
+        # ── Desconto ─────────────────────────────────────────
+        desconto_str = "0"
         if dados["preco"] and dados["preco_anterior"]:
             try:
-                p = float(dados["preco"])
+                p  = float(dados["preco"])
                 pa = float(dados["preco_anterior"])
                 if pa > p > 0:
-                    dados["desconto"] = str(round((1 - p / pa) * 100))
-                else:
-                    dados["desconto"] = "0"
+                    desconto_str = str(round((1 - p / pa) * 100))
             except ValueError:
-                dados["desconto"] = "0"
-        else:
-            # Tenta apanhar o badge de desconto directamente
+                pass
+
+        if desconto_str == "0":
             badge = soup.find("span", {"class": "savingsPercentage"})
             if badge:
-                dados["desconto"] = badge.get_text().replace("-", "").replace("%", "").strip()
-            else:
-                dados["desconto"] = "0"
+                desconto_str = badge.get_text().replace(
+                    "-", "").replace("%", "").strip()
 
-        # Imagem principal
-        img_el = soup.find("img", {"id": "landingImage"}) or \
-                 soup.find("img", {"id": "imgBlkFront"}) or \
-                 soup.find("img", {"class": "a-dynamic-image"})
+        dados["desconto"] = desconto_str
+        print(f"  → Desconto: {desconto_str}%")
+
+        # ── Imagem ───────────────────────────────────────────
+        imagem_url = ""
+        img_el = (
+            soup.find("img", {"id": "landingImage"}) or
+            soup.find("img", {"id": "imgBlkFront"}) or
+            soup.find("img", {"id": "main-image"})
+        )
         if img_el:
-            # Tenta obter a imagem de maior resolução
-            src = img_el.get("data-old-hires") or \
-                  img_el.get("data-a-dynamic-image") or \
-                  img_el.get("src", "")
-            # data-a-dynamic-image é um JSON com URLs — apanha o primeiro
-            if src.startswith("{"):
-                urls = re.findall(r'"(https://[^"]+)"', src)
-                src = urls[0] if urls else ""
-            dados["imagem"] = src
-        else:
-            dados["imagem"] = ""
+            imagem_url = (
+                img_el.get("data-old-hires") or
+                img_el.get("src", "")
+            )
+            # data-a-dynamic-image é JSON com URLs
+            dynamic = img_el.get("data-a-dynamic-image", "")
+            if dynamic:
+                urls = re.findall(r'"(https://[^"]+\.jpg[^"]*)"', dynamic)
+                if urls:
+                    # Escolhe a maior (último par largura/altura)
+                    imagem_url = urls[-1]
 
-        # Características (bullet points)
-        bullets = soup.find("div", {"id": "feature-bullets"})
+        dados["imagem"] = imagem_url
+        print(f"  → Imagem: {'OK' if imagem_url else 'não encontrada'}")
+
+        # ── Características ──────────────────────────────────
         caracteristicas = []
+        bullets = soup.find("div", {"id": "feature-bullets"})
         if bullets:
             items = bullets.find_all("span", {"class": "a-list-item"})
             for item in items:
                 texto = item.get_text().strip()
-                if texto and len(texto) > 10 and "Ver mais" not in texto:
+                if texto and len(texto) > 10:
                     caracteristicas.append(texto[:90])
                 if len(caracteristicas) >= 3:
                     break
+
         dados["caracteristicas"] = caracteristicas
 
         return dados
 
     except Exception as e:
-        print(f"⚠️ Erro no scraping de {url_completo}: {e}")
+        print(f"  ⚠️ Erro no scraping: {e}")
         return None
 
 
 def main():
     if not os.path.exists(FICHEIRO_LINKS):
-        print(f"⚠️ Ficheiro {FICHEIRO_LINKS} não encontrado.")
+        print(f"⚠️ {FICHEIRO_LINKS} não encontrado.")
         return
 
     with open(FICHEIRO_LINKS, "r", encoding="utf-8") as f:
         links = [l.strip() for l in f if l.strip() and l.startswith("http")]
 
     if not links:
-        print("⚠️ Nenhum link encontrado no links.txt.")
+        print("⚠️ Nenhum link em links.txt.")
         return
 
-    print(f"🔄 A processar {len(links)} links...")
-
-    # Carrega CSV existente para evitar duplicados
-    links_existentes = set()
-    if os.path.exists(FICHEIRO_CSV):
-        with open(FICHEIRO_CSV, "r", encoding="utf-8") as f:
-            leitor = csv.DictReader(f)
-            for linha in leitor:
-                if linha.get("link"):
-                    links_existentes.add(linha["link"])
+    print(f"🔄 A processar {len(links)} link(s)...")
 
     produtos = []
     for i, link_curto in enumerate(links, 1):
-        print(f"\n[{i}/{len(links)}] A processar: {link_curto}")
+        print(f"\n[{i}/{len(links)}] {link_curto}")
 
-        # Resolve o link curto
-        url_completo = resolver_link(link_curto)
-        print(f"  → Resolvido: {url_completo[:80]}")
+        url_limpo, asin = resolver_e_limpar(link_curto)
 
-        # Extrai ASIN e gera link de afiliado
-        asin = extrair_asin(url_completo)
         if not asin:
-            print(f"  ⚠️ ASIN não encontrado, a ignorar.")
+            print(f"  ❌ Não foi possível extrair ASIN.")
             continue
 
         link_afiliado = gerar_link_afiliado(asin)
+        dados = fazer_scraping(url_limpo)
 
-        if link_afiliado in links_existentes:
-            print(f"  ⏭️ Já existe no CSV, a ignorar.")
-            continue
-
-        # Scraping
-        dados = fazer_scraping(url_completo)
         if not dados:
             print(f"  ❌ Scraping falhou.")
             continue
@@ -257,35 +334,31 @@ def main():
             "caracteristica3": dados["caracteristicas"][2] if len(dados["caracteristicas"]) > 2 else "",
         }
         produtos.append(produto)
-        links_existentes.add(link_afiliado)
-        print(f"  ✅ OK: {dados['titulo'][:50]}")
-        print(f"     Preço: {dados['preco']} € | Antes: {dados['preco_anterior']} € | Desconto: {dados['desconto']}%")
+        print(f"  ✅ Produto extraído com sucesso!")
 
     if not produtos:
-        print("\n⚠️ Nenhum produto extraído com sucesso.")
+        print("\n⚠️ Nenhum produto extraído.")
         return
 
     # Escreve no CSV
     ficheiro_existe = os.path.exists(FICHEIRO_CSV)
-    tem_cabecalho = False
+    tem_conteudo = False
     if ficheiro_existe:
         with open(FICHEIRO_CSV, "r", encoding="utf-8") as f:
-            primeira_linha = f.readline().strip()
-            tem_cabecalho = primeira_linha == ",".join(CABECALHO)
+            conteudo = f.read().strip()
+            tem_conteudo = len(conteudo) > len(",".join(CABECALHO))
 
     with open(FICHEIRO_CSV, "a", encoding="utf-8", newline="") as f:
         escritor = csv.DictWriter(f, fieldnames=CABECALHO)
-        if not tem_cabecalho:
+        if not tem_conteudo:
             escritor.writeheader()
         escritor.writerows(produtos)
 
-    # Limpa o links.txt
+    # Limpa links.txt
     with open(FICHEIRO_LINKS, "w", encoding="utf-8") as f:
         f.write("")
 
     print(f"\n🎉 {len(produtos)} produto(s) adicionados ao CSV.")
-    print(f"📄 links.txt limpo.")
-    print(f"▶️  Corre agora o workflow 'Importar Produtos do CSV'.")
 
 
 if __name__ == "__main__":
