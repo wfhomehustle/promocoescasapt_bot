@@ -23,10 +23,16 @@ jobs:
 
       - name: Correr scraper
         run: python scraper.py
-
-      - name: Instalar dependências completas para importar
-        run: pip install python-telegram-bot==13.15 Pillow
-
+        
+      - name: Mostrar debug HTML (primeiros 2000 chars)
+        run: |
+          if [ -f debug_amazon.html ]; then
+            head -c 2000 debug_amazon.html
+          else
+            echo "Ficheiro debug_amazon.html não encontrado"
+          fi
+        continue-on-error: true
+        
       - name: Importar produtos do CSV para a fila
         run: python importar_csv.py
 
