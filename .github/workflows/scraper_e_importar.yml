@@ -1,0 +1,39 @@
+name: Scraper + Importar Produtos
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scraper-e-importar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalar dependências
+        run: pip install requests beautifulsoup4 python-dotenv
+
+      - name: Criar ficheiro .env
+        run: |
+          echo "AMAZON_ASSOCIATE_TAG=${{ secrets.AMAZON_ASSOCIATE_TAG }}" >> .env
+
+      - name: Correr scraper
+        run: python scraper.py
+
+      - name: Instalar dependências completas para importar
+        run: pip install python-telegram-bot==13.15 Pillow
+
+      - name: Importar produtos do CSV para a fila
+        run: python importar_csv.py
+
+      - name: Guardar alterações
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add produtos_novos.csv links.txt produtos_fila.json
+          git commit -m "Scraping + importação concluídos" || echo "Sem alterações"
+          git push
