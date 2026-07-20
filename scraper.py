@@ -121,7 +121,6 @@ def limpar_preco(texto: str) -> str:
         return padrao2.group(1)
     return ""
 
-
 def fazer_scraping(url_limpo: str) -> dict | None:
     """Faz scraping da página produto Amazon com URL limpo."""
     try:
@@ -132,17 +131,31 @@ def fazer_scraping(url_limpo: str) -> dict | None:
 
         resp = session.get(url_limpo, headers=headers, timeout=20)
         print(f"  → HTTP status: {resp.status_code}")
+        print(f"  → URL final: {resp.url[:100]}")
+        print(f"  → Tamanho resposta: {len(resp.text)} caracteres")
 
         if resp.status_code != 200:
-            print(f"  ⚠️ Página não acessível (status {resp.status_code})")
+            print(f"  ⚠️ Página não acessível")
             return None
 
-        # Verifica se foi redirecccionado para CAPTCHA
-        if "robot" in resp.url or "captcha" in resp.text.lower()[:500]:
-            print(f"  ⚠️ CAPTCHA detectado — Amazon bloqueou o pedido")
+        # Guarda HTML para debug
+        with open("debug_amazon.html", "w", encoding="utf-8") as f:
+            f.write(resp.text)
+        print(f"  → HTML guardado em debug_amazon.html")
+
+        # Verifica CAPTCHA
+        if "captcha" in resp.text.lower()[:2000] or \
+           "robot" in resp.text.lower()[:2000] or \
+           "validateCaptcha" in resp.text[:2000]:
+            print(f"  ⚠️ CAPTCHA detectado — Amazon bloqueou")
+            print(f"  Debug: {resp.text[:500]}")
             return None
 
         soup = BeautifulSoup(resp.content, "html.parser")
+
+        # Debug: mostra todos os IDs encontrados na página
+        ids_encontrados = [el.get("id") for el in soup.find_all(id=True)][:20]
+        print(f"  → IDs encontrados: {ids_encontrados}")
 
         dados = {}
 
@@ -157,15 +170,17 @@ def fazer_scraping(url_limpo: str) -> dict | None:
         for tag, attrs in seletores_titulo:
             titulo_el = soup.find(tag, attrs)
             if titulo_el:
+                print(f"  → Título encontrado com selector: {tag} {attrs}")
                 break
 
         if not titulo_el:
             titulo_el = soup.find("h1")
+            if titulo_el:
+                print(f"  → Título encontrado via h1 genérico")
 
         if not titulo_el:
-            print(f"  ⚠️ Título não encontrado")
-            # Debug: mostra o início do HTML para diagnóstico
-            print(f"  Debug HTML: {resp.text[:300]}")
+            print(f"  ⚠️ Título não encontrado em nenhum selector")
+            print(f"  → Primeiros 1000 chars do HTML: {resp.text[:1000]}")
             return None
 
         dados["titulo"] = titulo_el.get_text().strip()[:150]
@@ -174,14 +189,13 @@ def fazer_scraping(url_limpo: str) -> dict | None:
         # ── Preço actual ─────────────────────────────────────
         preco_str = ""
 
-        # Método 1: bloco de preço principal
         preco_bloco = soup.find("span", {"class": "a-price"})
         if preco_bloco:
             offscreen = preco_bloco.find("span", {"class": "a-offscreen"})
             if offscreen:
                 preco_str = limpar_preco(offscreen.get_text())
+                print(f"  → Preço via a-price: {preco_str}")
 
-        # Método 2: preço inteiro + fracção
         if not preco_str:
             whole = soup.find("span", {"class": "a-price-whole"})
             frac  = soup.find("span", {"class": "a-price-fraction"})
@@ -189,22 +203,24 @@ def fazer_scraping(url_limpo: str) -> dict | None:
                 w = whole.get_text().strip().replace(".", "").replace(",", "")
                 f = frac.get_text().strip() if frac else "00"
                 preco_str = f"{w}.{f}"
+                print(f"  → Preço via whole+frac: {preco_str}")
 
-        # Método 3: IDs específicos
         if not preco_str:
             for id_preco in ["priceblock_ourprice", "priceblock_dealprice",
                               "priceblock_saleprice"]:
                 el = soup.find("span", {"id": id_preco})
                 if el:
                     preco_str = limpar_preco(el.get_text())
+                    print(f"  → Preço via {id_preco}: {preco_str}")
                     break
 
+        if not preco_str:
+            print(f"  ⚠️ Preço não encontrado em nenhum selector")
+
         dados["preco"] = preco_str
-        print(f"  → Preço: {preco_str}")
 
-        # ── Preço anterior (riscado) ──────────────────────────
+        # ── Preço anterior ────────────────────────────────────
         preco_ant_str = ""
-
         seletores_ant = [
             ("span", {"class": "a-price a-text-price"}),
             ("span", {"data-a-strike": "true"}),
@@ -218,10 +234,10 @@ def fazer_scraping(url_limpo: str) -> dict | None:
                 texto = offscreen.get_text() if offscreen else el.get_text()
                 preco_ant_str = limpar_preco(texto)
                 if preco_ant_str:
+                    print(f"  → Preço anterior via {attrs}: {preco_ant_str}")
                     break
 
         dados["preco_anterior"] = preco_ant_str
-        print(f"  → Preço anterior: {preco_ant_str}")
 
         # ── Desconto ─────────────────────────────────────────
         desconto_str = "0"
@@ -241,7 +257,6 @@ def fazer_scraping(url_limpo: str) -> dict | None:
                     "-", "").replace("%", "").strip()
 
         dados["desconto"] = desconto_str
-        print(f"  → Desconto: {desconto_str}%")
 
         # ── Imagem ───────────────────────────────────────────
         imagem_url = ""
@@ -255,16 +270,13 @@ def fazer_scraping(url_limpo: str) -> dict | None:
                 img_el.get("data-old-hires") or
                 img_el.get("src", "")
             )
-            # data-a-dynamic-image é JSON com URLs
             dynamic = img_el.get("data-a-dynamic-image", "")
             if dynamic:
                 urls = re.findall(r'"(https://[^"]+\.jpg[^"]*)"', dynamic)
                 if urls:
-                    # Escolhe a maior (último par largura/altura)
                     imagem_url = urls[-1]
 
         dados["imagem"] = imagem_url
-        print(f"  → Imagem: {'OK' if imagem_url else 'não encontrada'}")
 
         # ── Características ──────────────────────────────────
         caracteristicas = []
@@ -284,8 +296,9 @@ def fazer_scraping(url_limpo: str) -> dict | None:
 
     except Exception as e:
         print(f"  ⚠️ Erro no scraping: {e}")
+        import traceback
+        traceback.print_exc()
         return None
-
 
 def main():
     if not os.path.exists(FICHEIRO_LINKS):
