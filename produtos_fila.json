@@ -1,14 +1,16 @@
 [
-  {
-    "asin": "B0H8Q5ZM2Y",
-    "titulo": "Smartwatch mulher com chamadas Bluetooth",
-    "preco": "36,58 €",
-    "preco_anterior": "129,99 €",
-    "desconto": "72",
-    "imagem": "https://m.media-amazon.com/images/I/81yp5DDxH2L._AC_SL1500_.jpg",
-    "link": "https://www.amazon.es/dp/B0H8Q5ZM2Y?tag=poupamais-21",
+   {
+    "asin": "B09YS5ZJXC",
+    "titulo": "SaveFamily Slim 4G. Smartwatch para crianças",
+    "preco": "72,18 €",
+    "preco_anterior": "96,57 €",
+    "desconto": "25",
+    "imagem": "https://m.media-amazon.com/images/I/51fuZm1ZLbL._AC_SL1080_.jpg",
+    "link": "https://www.amazon.es/dp/B09YS5ZJXC?tag=poupamais-21",
     "caracteristicas": [
-      "Chamadas por Bluetooth 5.4 e assistente de voz com IA"
+      "A MARCA Nº1 EM SMARTWATCHES INFANTIS",
+      "Controlo parental através da aplicação própria encriptada",
+      "Localizador GPS  Videochamada  À prova de água"
     ]
   },
   {
@@ -268,17 +270,15 @@
     "caracteristicas": []
   },
   {
-    "asin": "B09YS5ZJXC",
-    "titulo": "SaveFamily Slim 4G. Smartwatch para crianças",
-    "preco": "72,18 €",
-    "preco_anterior": "96,57 €",
-    "desconto": "25",
-    "imagem": "https://m.media-amazon.com/images/I/51fuZm1ZLbL._AC_SL1080_.jpg",
-    "link": "https://www.amazon.es/dp/B09YS5ZJXC?tag=poupamais-21",
+    "asin": "B0H8Q5ZM2Y",
+    "titulo": "Smartwatch mulher com chamadas Bluetooth",
+    "preco": "36,58 €",
+    "preco_anterior": "129,99 €",
+    "desconto": "72",
+    "imagem": "https://m.media-amazon.com/images/I/81yp5DDxH2L._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0H8Q5ZM2Y?tag=poupamais-21",
     "caracteristicas": [
-      "A MARCA Nº1 EM SMARTWATCHES INFANTIS",
-      "Controlo parental através da aplicação própria encriptada",
-      "Localizador GPS  Videochamada  À prova de água"
+      "Chamadas por Bluetooth 5.4 e assistente de voz com IA"
     ]
   }
 ]
