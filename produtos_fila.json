@@ -266,5 +266,19 @@
     "imagem": "https://m.media-amazon.com/images/I/61+-P2ZNUuL._AC_SL1425_.jpg",
     "link": "https://www.amazon.es/dp/B0DT17G87S?tag=poupamais-21",
     "caracteristicas": []
+  },
+  {
+    "asin": "B09YS5ZJXC",
+    "titulo": "SaveFamily Slim 4G. Smartwatch para crianças",
+    "preco": "72,18 €",
+    "preco_anterior": "96,57 €",
+    "desconto": "25",
+    "imagem": "https://m.media-amazon.com/images/I/51fuZm1ZLbL._AC_SL1080_.jpg",
+    "link": "https://www.amazon.es/dp/B09YS5ZJXC?tag=poupamais-21",
+    "caracteristicas": [
+      "A MARCA Nº1 EM SMARTWATCHES INFANTIS",
+      "Controlo parental através da aplicação própria encriptada",
+      "Localizador GPS  Videochamada  À prova de água"
+    ]
   }
 ]
