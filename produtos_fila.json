@@ -1,5 +1,19 @@
 [
   {
+    "asin": "B0CFFFSFFN",
+    "titulo": "UGREEN Cabo HDMI 2.1 8K Cabo HDMI certificado 8K 60Hz 4K",
+    "preco": "10,86 €",
+    "preco_anterior": "15,24 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/71pZ6M5mRSL._SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0CFFFSFFN?tag=poupamais-21",
+    "caracteristicas": [
+      "Cabo HDMI 2.1 Certificado 8K",
+      "Equipado com eARC",
+      "Boa Experiência de Jogo"
+    ]
+  },
+  {
     "asin": "B08T1B5NTK",
     "titulo": "Textilhome Capa protetora para Sofá",
     "preco": "26,94 €",
@@ -181,20 +195,6 @@
     "link": "https://www.amazon.es/dp/B0H8Q5ZM2Y?tag=poupamais-21",
     "caracteristicas": [
       "Chamadas por Bluetooth 5.4 e assistente de voz com IA"
-    ]
-  },
-  {
-    "asin": "B0CFFFSFFN",
-    "titulo": "UGREEN Cabo HDMI 2.1 8K Cabo HDMI certificado 8K 60Hz 4K",
-    "preco": "10,86 €",
-    "preco_anterior": "15,24 €",
-    "desconto": "29",
-    "imagem": "https://m.media-amazon.com/images/I/71pZ6M5mRSL._SL1500_.jpg",
-    "link": "https://www.amazon.es/dp/B0CFFFSFFN?tag=poupamais-21",
-    "caracteristicas": [
-      "Cabo HDMI 2.1 Certificado 8K",
-      "Equipado com eARC",
-      "Boa Experiência de Jogo"
     ]
   }
 ]
