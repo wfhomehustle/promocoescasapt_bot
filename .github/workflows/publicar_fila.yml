@@ -35,18 +35,10 @@ jobs:
       - name: Publicar próximo da fila
         run: python publicar_da_fila.py
 
-      - name: Guardar imagens para redes sociais
-        uses: actions/upload-artifact@v4
-        with:
-          name: imagens-sociais
-          path: imagens_sociais/
-          retention-days: 7
-        continue-on-error: true
-
-      - name: Guardar fila atualizada
+      - name: Guardar imagens e metadados no repositório
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add produtos_fila.json
-          git commit -m "Remove produto publicado da fila" || echo "Sem alterações"
+          git add imagens_sociais/ metadados_sociais/ produtos_fila.json
+          git commit -m "Publica produto e guarda imagens sociais" || echo "Sem alterações"
           git push
