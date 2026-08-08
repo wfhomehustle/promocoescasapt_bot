@@ -1,6 +1,6 @@
 # publicar_da_fila.py
 import os
-from gerador_imagem import criar_imagem_quadrada, criar_todas_imagens, guardar_imagem, guardar_todas_imagens
+from gerador_imagem import criar_todas_imagens, guardar_imagem, guardar_todas_imagens
 from bot_telegram import publicar_oferta
 from fila_manager import retirar_proximo
 
@@ -18,10 +18,12 @@ url_imagem     = produto.get("imagem")
 asin           = produto["asin"]
 
 # Gera os 3 formatos
-imagens  = criar_todas_imagens(titulo, preco_anterior, preco_promo,
-                                desconto_pct, url_imagem)
+imagens  = criar_todas_imagens(
+    titulo, preco_anterior, preco_promo,
+    desconto_pct, url_imagem
+)
 
-# Guarda todos em /tmp
+# Guarda temporariamente em /tmp
 caminhos = guardar_todas_imagens(imagens, asin, pasta="/tmp")
 
 # Publica no Telegram (formato quadrado)
@@ -31,17 +33,41 @@ if caminho_telegram:
     if sucesso:
         print(f"✅ Publicado no Telegram: {titulo[:50]}")
 
-# Guarda Pinterest e Story como artefactos do GitHub Actions
-# para fazeres download e usares nas redes sociais
-for formato in ["pinterest", "story"]:
-    caminho = caminhos.get(formato)
-    if caminho:
-        # Copia para pasta raiz do projecto (fica acessível nos artefactos)
-        destino = f"imagens_sociais/oferta_{asin}_{formato}.jpg"
-        os.makedirs("imagens_sociais", exist_ok=True)
-        with open(caminho, "rb") as f_in, open(destino, "wb") as f_out:
+# Guarda imagens no repositório para as redes sociais
+PASTA_SOCIAL = "imagens_sociais"
+os.makedirs(PASTA_SOCIAL, exist_ok=True)
+
+caminhos_sociais = {}
+for formato in ["quadrada", "pinterest", "story"]:
+    caminho_tmp = caminhos.get(formato)
+    if caminho_tmp and os.path.exists(caminho_tmp):
+        destino = f"{PASTA_SOCIAL}/{asin}_{formato}.jpg"
+        with open(caminho_tmp, "rb") as f_in, open(destino, "wb") as f_out:
             f_out.write(f_in.read())
-        print(f"📁 Guardado para redes sociais: {destino}")
+        caminhos_sociais[formato] = destino
+        print(f"📁 Imagem guardada: {destino}")
+
+# Guarda metadados do produto em JSON para o Make.com ler
+import json
+PASTA_META = "metadados_sociais"
+os.makedirs(PASTA_META, exist_ok=True)
+
+metadados = {
+    "asin":           asin,
+    "titulo":         titulo,
+    "preco":          preco_promo,
+    "preco_anterior": preco_anterior or "",
+    "desconto":       desconto_pct,
+    "link":           produto.get("link", ""),
+    "imagem_quadrada":  f"imagens_sociais/{asin}_quadrada.jpg",
+    "imagem_pinterest": f"imagens_sociais/{asin}_pinterest.jpg",
+    "imagem_story":     f"imagens_sociais/{asin}_story.jpg",
+    "caracteristicas":  produto.get("caracteristicas", []),
+}
+
+with open(f"{PASTA_META}/{asin}.json", "w", encoding="utf-8") as f:
+    json.dump(metadados, f, ensure_ascii=False, indent=2)
+print(f"📋 Metadados guardados: {PASTA_META}/{asin}.json")
 
 # Limpa /tmp
 for caminho in caminhos.values():
