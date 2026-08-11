@@ -1,4 +1,18 @@
 [
+    {
+    "asin": "B07QV4DD2V",
+    "titulo": "Orbegozo BF 1030 ventilador de chão 3 velocidades",
+    "preco": "26,42 €",
+    "preco_anterior": "27,96 €",
+    "desconto": "6",
+    "imagem": "https://m.media-amazon.com/images/I/61ef2mV0+xL._AC_SL1000_.jpg",
+    "link": "https://www.amazon.es/dp/B07QV4DD2V?tag=poupamais-21",
+    "caracteristicas": [
+      "Ventoinha Box Fan BF 1030 da Orbegozo com 5 pás e grelha de segurança",
+      "Motor de 45 W de potência distribuído em 3 velocidades",
+      "Sistema anti-tombamento e uma base grande e estável garantem maior segurança"
+    ]
+  },
   {
     "asin": "B0DDQF57MQ",
     "titulo": "Oral-B iO 6 Escova de Dentes Elétrica Preta 3 Cabeças",
@@ -417,20 +431,6 @@
       "Muito mais do que gelado: 11 programas automáticos",
       "Motorista digital BRUSHLESS RESULTADO em 5 minutos",
       "Textura perfeita e personalização total"
-    ]
-  },
-  {
-    "asin": "B07QV4DD2V",
-    "titulo": "Orbegozo BF 1030 ventilador de chão 3 velocidades",
-    "preco": "26,42 €",
-    "preco_anterior": "27,96 €",
-    "desconto": "6",
-    "imagem": "https://m.media-amazon.com/images/I/61ef2mV0+xL._AC_SL1000_.jpg",
-    "link": "https://www.amazon.es/dp/B07QV4DD2V?tag=poupamais-21",
-    "caracteristicas": [
-      "Ventoinha Box Fan BF 1030 da Orbegozo com 5 pás e grelha de segurança",
-      "Motor de 45 W de potência distribuído em 3 velocidades",
-      "Sistema anti-tombamento e uma base grande e estável garantem maior segurança"
     ]
   }
 ]
