@@ -65,13 +65,7 @@ metadados = {
     "caracteristicas":  produto.get("caracteristicas", []),
 }
 
-with open(f"{PASTA_META}/{asin}.json", "w", encoding="utf-8") as f:
+ficheiro_meta = f"{PASTA_META}/{asin}.json"
+with open(ficheiro_meta, "w", encoding="utf-8") as f:
     json.dump(metadados, f, ensure_ascii=False, indent=2)
-print(f"📋 Metadados guardados: {PASTA_META}/{asin}.json")
-
-# Limpa /tmp
-for caminho in caminhos.values():
-    try:
-        os.remove(caminho)
-    except OSError:
-        pass
+print(f"📋 Metadados guardados: {ficheiro_meta}")
