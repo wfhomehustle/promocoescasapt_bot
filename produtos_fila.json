@@ -1,1 +1,490 @@
-[]
+[
+  {
+    "asin": "B0BCKHQGJN",
+    "titulo": "Btootos Auriculares sem fio Bluetooth",
+    "preco": "22,66 €",
+    "preco_anterior": "50,81 €",
+    "desconto": "55",
+    "imagem": "https://m.media-amazon.com/images/I/71vfIyTVo5L._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0BCKHQGJN?tag=poupamais-21",
+    "caracteristicas": [
+      "Som estéreo HiFi e cancelamento de ruído ENC",
+      "36 horas de reprodução e ecrã LED de potência",
+      "Bluetooth 5.3 e ampla compatibilidade"
+    ]
+  },
+  {
+    "asin": "B0CWP6KQ4D",
+    "titulo": "Philips Airfryer série 2000 4.2L",
+    "preco": "71,14 €",
+    "preco_anterior": "96,56 €",
+    "desconto": "26",
+    "imagem": "https://m.media-amazon.com/images/I/51h32GPHu3L._AC_SL1000_.jpg",
+    "link": "https://www.amazon.es/dp/B0CWP6KQ4D?tag=poupamais-21",
+    "caracteristicas": [
+      "Tecnologia RapidAir: Crocante por fora e macio por dentro",
+      "13 funções de cozinha em 1: Fritar no ar assar gratinar  grelhar e muito mais",
+      "Ecrã tátil com 9 predefinições"
+    ]
+  },
+  {
+    "asin": "B09FL1YV4X",
+    "titulo": "TECLAST P50T Tablet Android 11' com teclado",
+    "preco": "132,14 €",
+    "preco_anterior": "299,00 €",
+    "desconto": "56",
+    "imagem": "https://m.media-amazon.com/images/I/71my5lnE3iL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B09FL1YV4X?tag=poupamais-21",
+    "caracteristicas": [
+      "Leve tablet com teclado e 10 acessórios",
+      "Tablet Android 16 + Gemini AI",
+      "Bateria 8000 mAh + Octa-Core"
+    ]
+  },
+  {
+    "asin": "B084PSXMQM",
+    "titulo": "BISSELL 15585 SpotClean Pet Pro Portátil",
+    "preco": "172,80 €",
+    "preco_anterior": "264,29 €",
+    "desconto": "35",
+    "imagem": "https://m.media-amazon.com/images/I/6105Hm79qgL._AC_SL1310_.jpg",
+    "link": "https://www.amazon.es/dp/B084PSXMQM?tag=poupamais-21",
+    "caracteristicas": [
+      "Limpeza potente",
+      "Ideal para animais de estimação",
+      "Tecnologia de dois tanques"
+    ]
+  },
+  {
+    "asin": "B0FD9SZ2SW",
+    "titulo": "MERACH Máquina Elíptica Eléctrica",
+    "preco": "121,98 €",
+    "preco_anterior": "172,80 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/71ZqliIfOrL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0FD9SZ2SW?tag=poupamais-21",
+    "caracteristicas": [
+      "Presente ideal para idosos e trabalhadores de escritório"
+    ]
+  },
+  {
+    "asin": "B0DDQF57MQ",
+    "titulo": "Oral-B iO 6 Escova de Dentes Elétrica Preta 3 Cabeças",
+    "preco": "135,15 €",
+    "preco_anterior": "213,42 €",
+    "desconto": "37",
+    "imagem": "https://m.media-amazon.com/images/I/81GLExcyVQL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0DDQF57MQ?tag=poupamais-21",
+    "caracteristicas": [
+      "Em apenas 1 semana elimina 100% mais de placa e obtém gengivas 190% mais saudáveis",
+      "Experimente a escovagem inteligente da Oral-B",
+      "Não deixe nenhuma área sem escovar com a aplicação Oral-B"
+    ]
+  },
+  {
+    "asin": "B0CKPFFMHL",
+    "titulo": "FUKUMARU Areia de tofu para gatos 10.8 kg",
+    "preco": "30,75 €",
+    "preco_anterior": "36,17 €",
+    "desconto": "15",
+    "imagem": "https://m.media-amazon.com/images/I/81gaqwSgd7L._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0CKPFFMHL?tag=poupamais-21",
+    "caracteristicas": [
+      "INGREDIENTES NATURAIS: Areia para gatos composta por 80% de tofu e 20% de grânulos de milho",
+      "AGLOMERAÇÃO RÁPIDA E FÁCIL DE LIMPAR",
+      "LIVRE DE PÓ E BAIXA TRAÇABILIDADE"
+    ]
+  },
+  {
+    "asin": "B0DSW7R4VN",
+    "titulo": "WOLFBOX MF50 - Espanador de ar elétrico sem fios",
+    "preco": "38,62 €",
+    "preco_anterior": "50,81 €",
+    "desconto": "24",
+    "imagem": "https://m.media-amazon.com/images/I/713BEhBxXWL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0DSW7R4VN?tag=poupamais-21",
+    "caracteristicas": [
+      "Ventoinha turbo superpotente",
+      "Ampla aplicação",
+      "Carregamento rápido de 3.5 horas"
+    ]
+  },
+  {
+    "asin": "B0FT2WJTMF",
+    "titulo": "Rowenta Force Pro 500 Ferro de caldeira",
+    "preco": "172,80 €",
+    "preco_anterior": "254,12 €",
+    "desconto": "32",
+    "imagem": "https://m.media-amazon.com/images/I/61ZKj0cYmfL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0FT2WJTMF?tag=poupamais-21",
+    "caracteristicas": [
+      "Grande potência a vapor: centro de engomar equipado com 8 bares de pressão",
+      "ECONOMIZA ENERGIA: economize até 50% de energia no modo Eco",
+      "PASSAR A FERRO SEM ESFORÇO"
+    ]
+  },
+  {
+    "asin": "B0F9FN228S",
+    "titulo": "BLUETTI Elite 30 V2 Gerador Solar Portátil 288Wh Bateria",
+    "preco": "222,62 €",
+    "preco_anterior": "283,61 €",
+    "desconto": "22",
+    "imagem": "https://m.media-amazon.com/images/I/81EsBcAUUxL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0F9FN228S?tag=poupamais-21",
+    "caracteristicas": [
+      "Leve e portátil",
+      "Carregamento CA em 70 Minutos",
+      "Potência sem limites"
+    ]
+  },
+  {
+    "asin": "B0DQWQJ1MY",
+    "titulo": "Braun Recortador Tudo em Um Série 5 AIO5565",
+    "preco": "55,90 €",
+    "preco_anterior": "81,32 €",
+    "desconto": "31",
+    "imagem": "https://m.media-amazon.com/images/I/81ZsgmqvtfL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0DQWQJ1MY?tag=poupamais-21",
+    "caracteristicas": [
+      "Recorte ilimitado da cabeça aos pés",
+      "Versatilidade máxima",
+      "Macio com a pele sensível"
+    ]
+  },
+  {
+    "asin": "B0DSPVDYQ9",
+    "titulo": "UGREEN Nexode Bateria externa portátil 20000 mAh de 45 W",
+    "preco": "28,97 €",
+    "preco_anterior": "38,62 €",
+    "desconto": "25",
+    "imagem": "https://m.media-amazon.com/images/I/51B6XzIDngL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0DSPVDYQ9?tag=poupamais-21",
+    "caracteristicas": [
+      "Carregamento ultra-rápido de 45 W",
+      "Grande capacidade de 20000 mAh",
+      "Carregamento de 3 dispositivos simultaneamente"
+    ]
+  },
+  {
+    "asin": "B0976VBC37",
+    "titulo": "Mangas de natação para crianças 6 peças",
+    "preco": "20,32 €",
+    "preco_anterior": "30,49 €",
+    "desconto": "33",
+    "imagem": "https://m.media-amazon.com/images/I/616piD0CIoL._AC_SL1100_.jpg",
+    "link": "https://www.amazon.es/dp/B0976VBC37?tag=poupamais-21",
+    "caracteristicas": [
+      "Feito de materiais espumantes de EVA",
+      "Mangueiras de cortiça com um único diâmetro de 18.7 cm",
+      "É muito adequado para pessoas que estão a aprender a nadar"
+    ]
+  },
+  {
+    "asin": "B0C2C8YG8B",
+    "titulo": "Insta360 X3 - Câmera de Ação 360 Impermeável com Sensores",
+    "preco": "263,28 €",
+    "preco_anterior": "365,94 €",
+    "desconto": "28",
+    "imagem": "https://m.media-amazon.com/images/I/61RldGH-ESL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0C2C8YG8B?tag=poupamais-21",
+    "caracteristicas": [
+      "Adesivos oficiais exclusivos: o pacote contém um conjunto exclusivo de adesivos Insta360.",
+      "Captura e reenquadramento 360: A X3 captura vídeo em modo HDR 360 Active de 5.7 K",
+      "Sensores duplos de 1/2' de 48 MP"
+    ]
+  },
+  {
+    "asin": "B075JHQX38",
+    "titulo": "Utopia Bedding Conjunto de Lençóis de 4 Peças 150x200",
+    "preco": "19,18 €",
+    "preco_anterior": "24,39 €",
+    "desconto": "21",
+    "imagem": "https://m.media-amazon.com/images/I/71ToFJ-9jAL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B075JHQX38?tag=poupamais-21",
+    "caracteristicas": [
+      "Conjunto de lençóis Utopia Bedding conjunto de lençóis de 4 peças",
+      "Microfibra escovada de poliéster",
+      "Elástico total: o elástico total usado no lençol de baixo adapta-se facilmente ao colchão"
+    ]
+  },
+  {
+    "asin": "B0CZ9T8H8N",
+    "titulo": "Amazon Kindle Scribe (64 GB)",
+    "preco": "335,45 €",
+    "preco_anterior": "487,93 €",
+    "desconto": "31",
+    "imagem": "https://m.media-amazon.com/images/I/71XyttQ0hNL._AC_SL1000_.jpg",
+    "link": "https://www.amazon.es/dp/B0CZ9T8H8N?tag=poupamais-21",
+    "caracteristicas": []
+  },
+  {
+    "asin": "B0D2J1BNY2",
+    "titulo": "Rowenta X-Pert 7.60 aspirador vassoura sem fio",
+    "preco": "106,73 €",
+    "preco_anterior": "193,13 €",
+    "desconto": "45",
+    "imagem": "https://m.media-amazon.com/images/I/71qmmBeMoJL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0D2J1BNY2?tag=poupamais-21",
+    "caracteristicas": [
+      "LIMPEZA VERSÁTIL: aspiradora escoba sem fio equipada com acessórios versáteis",
+      "ASPIRAÇÃO POTENTE: equipado com um motor de 140W de potência",
+      "FORMATO LIGEIRO: tecnologia aerodinâmica num design ergonómico e leve"
+    ]
+  },
+  {
+    "asin": "B0CG6BLJ37",
+    "titulo": "KRUPS Dolce Gusto Genio S",
+    "preco": "65,05 €",
+    "preco_anterior": "106,73 €",
+    "desconto": "39",
+    "imagem": "https://m.media-amazon.com/images/I/6187sdpY4wL._AC_SL1498_.jpg",
+    "link": "https://www.amazon.es/dp/B0CG6BLJ37?tag=poupamais-21",
+    "caracteristicas": [
+      "Potência e facilidade de uso: Cafeteira de cápsulas de 1500 W"
+    ]
+  },
+  {
+    "asin": "B0BXGNLGB5",
+    "titulo": "Umatoll Bicicleta sem Pedais para crianças",
+    "preco": "28,97 €",
+    "preco_anterior": "40,65 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/61dS-AVI6LL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0BXGNLGB5?tag=poupamais-21",
+    "caracteristicas": [
+      "Primeira Segurança",
+      "Mais leve e mais estável",
+      "Assento ajustável"
+    ]
+  },
+  {
+    "asin": "B086WQWSNT",
+    "titulo": "Tefal Duetto Conjunto de Frigideiras de 20/24/28 cm",
+    "preco": "53,86 €",
+    "preco_anterior": "81,22 €",
+    "desconto": "34",
+    "imagem": "https://m.media-amazon.com/images/I/71ahWd5vOCL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B086WQWSNT?tag=poupamais-21",
+    "caracteristicas": [
+      "Indicador de temperatura",
+      "Revestimento anti-adesão sem PFOA"
+    ]
+  },
+  {
+    "asin": "B0FBS8M3B6",
+    "titulo": "Reebok Flip Charge Sneaker mulher",
+    "preco": "39,80 €",
+    "preco_anterior": "55,90 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/41GlxZedzhL._AC_SL1000_.jpg",
+    "link": "https://www.amazon.es/dp/B0FBS8M3B6?tag=poupamais-21",
+    "caracteristicas": []
+  },
+  {
+    "asin": "B0C61DX94R",
+    "titulo": "Hzuaneri Armário de jóias 8 LEDs de 4 rodas",
+    "preco": "87,15 €",
+    "preco_anterior": "104,70 €",
+    "desconto": "17",
+    "imagem": "https://m.media-amazon.com/images/I/71dk6-ZljaL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0C61DX94R?tag=poupamais-21",
+    "caracteristicas": [
+      "Amplo espaço de armazenamento",
+      "Solução 5 em 1 para economizar espaço",
+      "Fácil de mover e bloquear"
+    ]
+  },
+  {
+    "asin": "B0BWHFS3PK",
+    "titulo": "Fonte de Água para Gatos Sem Fio com Sensor de Movimento",
+    "preco": "58,89 €",
+    "preco_anterior": "81,32 €",
+    "desconto": "28",
+    "imagem": "https://m.media-amazon.com/images/I/71+fxJThTTL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0BWHFS3PK?tag=poupamais-21",
+    "caracteristicas": [
+      "Fonte para gatos sem cabos",
+      "Com sensor e bateria"
+    ]
+  },
+  {
+    "asin": "B0GNMS31J4",
+    "titulo": "KRUPS Harmony Cafeteira super automática 4 bebidas",
+    "preco": "264,29 €",
+    "preco_anterior": "335,45 €",
+    "desconto": "21",
+    "imagem": "https://m.media-amazon.com/images/I/61kB+838QWL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0GNMS31J4?tag=poupamais-21",
+    "caracteristicas": [
+      "4 bebidas de café e leite",
+      "Fácil de usar: seleção direta de bebidas e acesso simples a configurações",
+      "Explosador de leite manual: obtenha uma espuma fina e delicada para cappuccinos e lattes"
+    ]
+  },
+  {
+    "asin": "B091BRJSRN",
+    "titulo": "UGREEN Nexode Carregador USB C 65W",
+    "preco": "22,20 €",
+    "preco_anterior": "30,49 €",
+    "desconto": "27",
+    "imagem": "https://m.media-amazon.com/images/I/51cBGR2FqWL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B091BRJSRN?tag=poupamais-21",
+    "caracteristicas": [
+      "Carregador 3 em 1 equipado com 2 USB-C e 1 USB-A",
+      "Carregador de carregamento rápido",
+      "Design Compacto"
+    ]
+  },
+  {
+    "asin": "B0DFGYTGFF",
+    "titulo": "Rowenta Clean It Aspirador de estofos multiusos",
+    "preco": "111,81 €",
+    "preco_anterior": "162,63 €",
+    "desconto": "31",
+    "imagem": "https://m.media-amazon.com/images/I/71mV+zIBJML._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0DFGYTGFF?tag=poupamais-21",
+    "caracteristicas": [
+      "Limpeza diária de sujidade e manchas",
+      "Grande VERSATILIDADE para satisfazer todas as suas necessidades"
+    ]
+  },
+  {
+    "asin": "B0GCKBWHHZ",
+    "titulo": "JDMCAR Arrancador de baterias carro compressor 4 em 1",
+    "preco": "68,09 €",
+    "preco_anterior": "111,81 €",
+    "desconto": "39",
+    "imagem": "https://m.media-amazon.com/images/I/71VjpD7CDLL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0GCKBWHHZ?tag=poupamais-21",
+    "caracteristicas": [
+      "Poderoso arranque de emergência",
+      "Controlo de enchimento com ecrã LCD e 160 PSI",
+      "Solução de emergência todo-o-terreno 4 em 1"
+    ]
+  },
+  {
+    "asin": "B01N1UX8RW",
+    "titulo": "RENPHO Balança de Casa de Banho Digital",
+    "preco": "22,20 €",
+    "preco_anterior": "30,49 €",
+    "desconto": "27",
+    "imagem": "https://m.media-amazon.com/images/I/61KqTsLN+pL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B01N1UX8RW?tag=poupamais-21",
+    "caracteristicas": [
+      "Alta precisão e alta qualidade - com tecnologia 'step-on'",
+      "Análise de 13 dados de composição corporal",
+      "Guarde as suas medidas e monitore a sua saúde"
+    ]
+  },
+  {
+    "asin": "B0G6WXP4LN",
+    "titulo": "Gillette Labs i3 Body + Intimate máquina de barbear",
+    "preco": "35,57 €",
+    "preco_anterior": "45,73 €",
+    "desconto": "22",
+    "imagem": "https://m.media-amazon.com/images/I/81CZipNNF-L._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0G6WXP4LN?tag=poupamais-21",
+    "caracteristicas": [
+      "Inclui dois pentes para o corpo (3 mm e áreas sensíveis) e",
+      "Tecnologia SKINFIRST: Até 0% de cortes e arranhões",
+      "Gestão e precisão: Projetado para um controlo fácil"
+    ]
+  },
+  {
+    "asin": "B0C2Z9H9KG",
+    "titulo": "HOMCA Almofada Cervical Ergonómica 2 em 1",
+    "preco": "45,73 €",
+    "preco_anterior": "63,52 €",
+    "desconto": "28",
+    "imagem": "https://m.media-amazon.com/images/I/71tEygJYrkL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0C2Z9H9KG?tag=poupamais-21",
+    "caracteristicas": [
+      "Almofada de espuma viscoelástica HOMCA",
+      "Funda de almofada respirável e de fácil cuidado",
+      "Fabricada com Memory Foam"
+    ]
+  },
+  {
+    "asin": "B0FXHM8WGH",
+    "titulo": "Cacao V Delta Chocolate Branco Profissional 250g –",
+    "preco": "7,43 €",
+    "preco_anterior": "11,17 €",
+    "desconto": "33",
+    "imagem": "https://m.media-amazon.com/images/I/71WxFFsT6tL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0FXHM8WGH?tag=poupamais-21",
+    "caracteristicas": [
+      "Cobertura pura de chocolate branco",
+      "ASSÁVEL E ESTÁVEL AO CALOR",
+      "TEXTURA DENSA E CREMOSA – Perfeita para recheios firmes cremes e ganaches"
+    ]
+  },
+  {
+    "asin": "B0G4JQBFBW",
+    "titulo": "EDAGNY Elegantes camas para gatos e cães",
+    "preco": "25,40 €",
+    "preco_anterior": "35,57 €",
+    "desconto": "29",
+    "imagem": "https://m.media-amazon.com/images/I/71m6tTVdMAL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0G4JQBFBW?tag=poupamais-21",
+    "caracteristicas": [
+      "Conforto e suporte superiores",
+      "Tecido macio e que não solta pelos",
+      "Estética elegante e adaptável"
+    ]
+  },
+  {
+    "asin": "B0G3XV7ZKY",
+    "titulo": "Areneiro gatos auto-limpeza aberto Ellenpent",
+    "preco": "211,44 €",
+    "preco_anterior": "303,95 €",
+    "desconto": "30",
+    "imagem": "https://m.media-amazon.com/images/I/71WlNgp6pML._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0G3XV7ZKY?tag=poupamais-21",
+    "caracteristicas": [
+      "Auto-limpante e sem pá: Esta caixa de areia automática elimina a limpeza diária",
+      "Controlo eficaz de odores: Um sistema de barreira dupla contém odores de forma confiável",
+      "Design aberto para o seu conforto"
+    ]
+  },
+  {
+    "asin": "B0882ZCHMW",
+    "titulo": "Matcha & CO Chá Matcha Premium 100% Ecológico",
+    "preco": "18,15 €",
+    "preco_anterior": "36,84 €",
+    "desconto": "51",
+    "imagem": "https://m.media-amazon.com/images/I/719B3AmnO4L._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0882ZCHMW?tag=poupamais-21",
+    "caracteristicas": [
+      "Chá Matcha 100% ecológico de Uji Japão",
+      "De sabor puro e intenso. Perfeito para amantes de matcha e gourmets",
+      "Cultivado de forma ecológica e sustentável nos campos de chá de Uji Kyoto"
+    ]
+  },
+  {
+    "asin": "B09RKHRJ3F",
+    "titulo": "Utopia Home Perchas de Veludo Premium Antideslizantes",
+    "preco": "14,48 €",
+    "preco_anterior": "26,42 €",
+    "desconto": "45",
+    "imagem": "https://m.media-amazon.com/images/I/81R4X3mlyLL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B09RKHRJ3F?tag=poupamais-21",
+    "caracteristicas": [
+      "Os cabides de veludo medem 44.5 x 0.6 x 23.0 cm cada",
+      "Resistente o suficiente para suportar 4.5 kg"
+    ]
+  },
+  {
+    "asin": "B0GTMHKRCL",
+    "titulo": "Ufesa Gelatella frigorífico multifunções",
+    "preco": "162,63 €",
+    "preco_anterior": "304,95 €",
+    "desconto": "47",
+    "imagem": "https://m.media-amazon.com/images/I/711Z7H-zuyL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.es/dp/B0GTMHKRCL?tag=poupamais-21",
+    "caracteristicas": [
+      "Muito mais do que gelado: 11 programas automáticos",
+      "Motorista digital BRUSHLESS RESULTADO em 5 minutos",
+      "Textura perfeita e personalização total"
+    ]
+  }
+]
