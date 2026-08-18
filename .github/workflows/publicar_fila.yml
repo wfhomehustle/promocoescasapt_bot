@@ -34,13 +34,15 @@ jobs:
 
       - name: Publicar próximo da fila
         run: python publicar_da_fila.py
+        
+      - name: Aguardar GitHub Pages indexar
+        run: sleep 180
 
       - name: Guardar imagens e metadados no repositório
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add imagens_sociais/ metadados_sociais/ produtos_fila.json
-          # Extrai o ASIN do ficheiro JSON mais recente
           ASIN=$(ls -t metadados_sociais/*.json | head -1 | xargs basename | sed 's/.json//')
           git commit -m "produto:${ASIN}" || echo "Sem alterações"
           git push
