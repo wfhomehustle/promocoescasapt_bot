@@ -5,7 +5,6 @@ Substitui a PA-API 5.0 que foi descontinuada em Maio 2026.
 """
 
 import os
-import json
 import random
 import requests
 from dotenv import load_dotenv
@@ -16,7 +15,6 @@ CLIENT_ID     = os.getenv("AMAZON_ACCESS_KEY")
 CLIENT_SECRET = os.getenv("AMAZON_SECRET_KEY")
 ASSOCIATE_TAG = os.getenv("AMAZON_ASSOCIATE_TAG")
 
-# URLs da Creators API
 TOKEN_URL    = "https://api.amazon.com/auth/o2/token"
 API_BASE_URL = "https://creatorsapi.amazon/catalog/v1"
 
@@ -51,7 +49,6 @@ def gerar_link_afiliado(asin: str) -> str:
 def obter_token() -> str | None:
     """Obtém token de acesso OAuth 2.0 para a Creators API."""
     try:
-        # Tenta primeiro com form-urlencoded (formato standard OAuth 2.0)
         resp = requests.post(
             TOKEN_URL,
             headers={"Content-Type": "application/x-www-form-urlencoded"},
@@ -65,7 +62,6 @@ def obter_token() -> str | None:
         )
 
         if resp.status_code == 400:
-            # Fallback: tenta com JSON
             print(f"   Form-urlencoded falhou ({resp.status_code}), a tentar JSON...")
             resp = requests.post(
                 TOKEN_URL,
@@ -106,22 +102,21 @@ def procurar_ofertas(max_resultados: int = 5) -> list[dict]:
     }
 
     pesquisa, categoria = random.choice(PESQUISAS)
+    print(f"🔍 A pesquisar: '{pesquisa}' em '{categoria}'")
 
     payload = {
-        "keywords":         pesquisa,
-        "searchIndex":      categoria,
-        "itemCount":        max_resultados,
-        "partnerTag":       ASSOCIATE_TAG,
-        "partnerType":      "Associates",
-        "marketplace":      "www.amazon.es",
+        "keywords":    pesquisa,
+        "searchIndex": categoria,
+        "itemCount":   max_resultados,
+        "partnerTag":  ASSOCIATE_TAG,
+        "partnerType": "Associates",
+        "marketplace": "www.amazon.es",
         "resources": [
             "itemInfo.title",
-            "offers.listingsV2.price",
-            "offers.listingsV2.savingBasis",
-            "images.primary.large",
             "itemInfo.features",
+            "offersV2.listings.price",
+            "images.primary.small",
         ],
-        "minSavingPercent": 10,
     }
 
     try:
@@ -133,6 +128,7 @@ def procurar_ofertas(max_resultados: int = 5) -> list[dict]:
         )
         resp.raise_for_status()
         data = resp.json()
+        print(f"✅ Resposta recebida da Creators API")
     except Exception as e:
         print(f"❌ Erro na Creators API: {e}")
         if hasattr(e, 'response') and e.response is not None:
@@ -141,6 +137,7 @@ def procurar_ofertas(max_resultados: int = 5) -> list[dict]:
 
     ofertas = []
     items = data.get("searchResult", {}).get("items", [])
+    print(f"📦 {len(items)} item(s) encontrado(s) na API")
 
     for item in items:
         asin = item.get("asin")
@@ -157,24 +154,14 @@ def procurar_ofertas(max_resultados: int = 5) -> list[dict]:
             continue
         oferta["titulo"] = titulo
 
-        # Preços (formato listingsV2)
-        listings = (item.get("offers", {})
-                       .get("listingsV2", []))
+        # Preços (formato offersV2)
+        listings = (item.get("offersV2", {})
+                       .get("listings", []))
         if listings:
-            price_info = listings[0].get("price", {})
-            oferta["preco"]  = price_info.get("displayAmount", "Ver preço")
-            preco_valor      = price_info.get("amount")
-            saving           = listings[0].get("savingBasis")
-            if saving:
-                oferta["preco_anterior"] = saving.get("displayAmount")
-                anterior_valor           = saving.get("amount")
-                oferta["desconto"]       = (
-                    round((1 - preco_valor / anterior_valor) * 100)
-                    if preco_valor and anterior_valor else 0
-                )
-            else:
-                oferta["preco_anterior"] = None
-                oferta["desconto"]       = 0
+            price_info               = listings[0].get("price", {})
+            oferta["preco"]          = price_info.get("displayAmount", "Ver preço")
+            oferta["preco_anterior"] = None
+            oferta["desconto"]       = 0
         else:
             oferta["preco"]          = "Ver preço"
             oferta["preco_anterior"] = None
@@ -183,7 +170,7 @@ def procurar_ofertas(max_resultados: int = 5) -> list[dict]:
         # Imagem
         imagem = (item.get("images", {})
                      .get("primary", {})
-                     .get("large", {})
+                     .get("small", {})
                      .get("url"))
         oferta["imagem"] = imagem
 
@@ -193,8 +180,7 @@ def procurar_ofertas(max_resultados: int = 5) -> list[dict]:
                        .get("displayValues", []))
         oferta["caracteristicas"] = features[:3]
 
-        if oferta["desconto"] >= 10:
-            ofertas.append(oferta)
+        ofertas.append(oferta)
 
-    print(f"✅ {len(ofertas)} oferta(s) encontrada(s)")
+    print(f"✅ {len(ofertas)} oferta(s) prontas para publicar")
     return ofertas
