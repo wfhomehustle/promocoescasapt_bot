@@ -1,19 +1,5 @@
 [
   {
-    "asin": "B0DL6YSGZ4",
-    "titulo": "Apple Rato Magic Mouse",
-    "preco": "59,99 €",
-    "preco_anterior": "85,00 €",
-    "desconto": "29",
-    "imagem": "https://m.media-amazon.com/images/I/51utTTF3AYL._AC_SL1500_.jpg",
-    "link": "https://www.amazon.es/dp/B0DL6YSGZ4?tag=poupamais-21",
-    "caracteristicas": [
-      "O Magic Mouse é sem fios e recarregável",
-      "Superfície Multi-Touch",
-      "Bateria recarregável  poderá despreocupar-se em carregá-la por um mês ou mais"
-    ]
-  },
-  {
     "asin": "B08N64CBKG",
     "titulo": "XIAOMI Smartwatch S5 46 mm Homem e Mulher",
     "preco": "168,99 €",
