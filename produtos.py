@@ -18,7 +18,7 @@ ASSOCIATE_TAG = os.getenv("AMAZON_ASSOCIATE_TAG")
 
 # URLs da Creators API
 TOKEN_URL    = "https://api.amazon.com/auth/o2/token"
-API_BASE_URL = "https://affiliate-program.amazon.es/creatorsapi/v1"
+API_BASE_URL = "https://creatorsapi.amazon/catalog/v1"
 
 PESQUISAS = [
     ("fritadeira sem óleo",          "Kitchen"),
@@ -49,14 +49,19 @@ def gerar_link_afiliado(asin: str) -> str:
 
 
 def obter_token() -> str | None:
-    """Obtém token de acesso OAuth 2.0."""
+    """Obtém token de acesso OAuth 2.0 para a Creators API."""
     try:
-        resp = requests.post(TOKEN_URL, data={
-            "grant_type":    "client_credentials",
-            "client_id":     CLIENT_ID,
-            "client_secret": CLIENT_SECRET,
-            "scope":         "advertising::creators:read",
-        }, timeout=15)
+        resp = requests.post(
+            TOKEN_URL,
+            headers={"Content-Type": "application/json"},
+            json={
+                "grant_type":    "client_credentials",
+                "client_id":     CLIENT_ID,
+                "client_secret": CLIENT_SECRET,
+                "scope":         "creatorsapi::default",
+            },
+            timeout=15
+        )
         resp.raise_for_status()
         token = resp.json().get("access_token")
         print(f"✅ Token OAuth obtido com sucesso")
@@ -69,30 +74,31 @@ def obter_token() -> str | None:
 
 
 def procurar_ofertas(max_resultados: int = 5) -> list[dict]:
-    """Procura ofertas via Creators API."""
+    """Procura ofertas via Amazon Creators API."""
 
     token = obter_token()
     if not token:
         return []
 
     headers = {
-        "Authorization":  f"Bearer {token}",
-        "Content-Type":   "application/json",
-        "x-marketplace":  "www.amazon.es",
+        "Authorization": f"Bearer {token}",
+        "Content-Type":  "application/json",
+        "x-marketplace": "www.amazon.es",
     }
 
     pesquisa, categoria = random.choice(PESQUISAS)
 
     payload = {
-        "keywords":    pesquisa,
-        "searchIndex": categoria,
-        "itemCount":   max_resultados,
-        "partnerTag":  ASSOCIATE_TAG,
-        "partnerType": "Associates",
+        "keywords":         pesquisa,
+        "searchIndex":      categoria,
+        "itemCount":        max_resultados,
+        "partnerTag":       ASSOCIATE_TAG,
+        "partnerType":      "Associates",
+        "marketplace":      "www.amazon.es",
         "resources": [
             "itemInfo.title",
-            "offers.listings.price",
-            "offers.listings.savingBasis",
+            "offers.listingsV2.price",
+            "offers.listingsV2.savingBasis",
             "images.primary.large",
             "itemInfo.features",
         ],
@@ -125,18 +131,21 @@ def procurar_ofertas(max_resultados: int = 5) -> list[dict]:
         oferta = {"asin": asin, "link": gerar_link_afiliado(asin)}
 
         # Título
-        titulo = item.get("itemInfo", {}).get("title", {}).get("displayValue")
+        titulo = (item.get("itemInfo", {})
+                     .get("title", {})
+                     .get("displayValue"))
         if not titulo:
             continue
         oferta["titulo"] = titulo
 
-        # Preços
-        listings = item.get("offers", {}).get("listings", [])
+        # Preços (formato listingsV2)
+        listings = (item.get("offers", {})
+                       .get("listingsV2", []))
         if listings:
             price_info = listings[0].get("price", {})
-            oferta["preco"]       = price_info.get("displayAmount", "Ver preço")
-            preco_valor           = price_info.get("amount")
-            saving                = listings[0].get("savingBasis")
+            oferta["preco"]  = price_info.get("displayAmount", "Ver preço")
+            preco_valor      = price_info.get("amount")
+            saving           = listings[0].get("savingBasis")
             if saving:
                 oferta["preco_anterior"] = saving.get("displayAmount")
                 anterior_valor           = saving.get("amount")
