@@ -24,7 +24,7 @@ jobs:
       - name: Instalar dependências
         run: pip install -r requirements.txt
 
-            - name: Criar ficheiro .env
+      - name: Criar ficheiro .env
         run: |
           echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> .env
           echo "TELEGRAM_CHANNEL_ID=${{ secrets.TELEGRAM_CHANNEL_ID }}" >> .env
