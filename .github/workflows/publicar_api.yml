@@ -37,10 +37,14 @@ jobs:
       - name: Procurar e publicar ofertas via PA-API
         run: python publicar.py
 
-      - name: Guardar registo de publicados
+      - name: Aguardar GitHub Pages indexar
+        run: sleep 180
+
+      - name: Guardar imagens, metadados e publicados
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add publicados.txt
-          git commit -m "Atualiza publicados.txt" || echo "Sem alterações"
+          git add publicados.txt imagens_sociais/ metadados_sociais/
+          ASIN=$(ls -t metadados_sociais/*.json 2>/dev/null | head -1 | xargs basename 2>/dev/null | sed 's/.json//' || echo "sem-produto")
+          git commit -m "produto:${ASIN}" || echo "Sem alterações"
           git push
