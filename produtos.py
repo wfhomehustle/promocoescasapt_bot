@@ -51,10 +51,11 @@ def gerar_link_afiliado(asin: str) -> str:
 def obter_token() -> str | None:
     """Obtém token de acesso OAuth 2.0 para a Creators API."""
     try:
+        # Tenta primeiro com form-urlencoded (formato standard OAuth 2.0)
         resp = requests.post(
             TOKEN_URL,
-            headers={"Content-Type": "application/json"},
-            json={
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
+            data={
                 "grant_type":    "client_credentials",
                 "client_id":     CLIENT_ID,
                 "client_secret": CLIENT_SECRET,
@@ -62,14 +63,32 @@ def obter_token() -> str | None:
             },
             timeout=15
         )
+
+        if resp.status_code == 400:
+            # Fallback: tenta com JSON
+            print(f"   Form-urlencoded falhou ({resp.status_code}), a tentar JSON...")
+            resp = requests.post(
+                TOKEN_URL,
+                headers={"Content-Type": "application/json"},
+                json={
+                    "grant_type":    "client_credentials",
+                    "client_id":     CLIENT_ID,
+                    "client_secret": CLIENT_SECRET,
+                    "scope":         "creatorsapi::default",
+                },
+                timeout=15
+            )
+
         resp.raise_for_status()
         token = resp.json().get("access_token")
         print(f"✅ Token OAuth obtido com sucesso")
         return token
+
     except Exception as e:
         print(f"❌ Erro ao obter token OAuth: {e}")
         if hasattr(e, 'response') and e.response is not None:
-            print(f"   Resposta: {e.response.text[:300]}")
+            print(f"   Status: {e.response.status_code}")
+            print(f"   Resposta: {e.response.text[:500]}")
         return None
 
 
