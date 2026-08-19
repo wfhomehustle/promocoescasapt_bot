@@ -2,12 +2,7 @@ name: Publicar via PA-API
 
 on:
   schedule:
-    - cron: '0 7 * * *'
-    - cron: '0 11 * * *'
-    - cron: '0 14 * * *'
-    - cron: '0 17 * * *'
-    - cron: '0 19 * * *'
-    - cron: '0 21 * * *'
+    - cron: '0,30 7-22 * * *'
   workflow_dispatch:
 
 jobs:
@@ -38,13 +33,13 @@ jobs:
         run: python publicar.py
 
       - name: Aguardar GitHub Pages indexar
-        run: sleep 180
+        run: sleep 30
 
       - name: Guardar imagens, metadados e publicados
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add publicados.txt imagens_sociais/ metadados_sociais/
+          git add publicados.txt imagens_sociais/ metadados_sociais/ historico_publicados.json
           ASIN=$(ls -t metadados_sociais/*.json 2>/dev/null | head -1 | xargs basename 2>/dev/null | sed 's/.json//' || echo "sem-produto")
           git commit -m "produto:${ASIN}" || echo "Sem alterações"
           git push
