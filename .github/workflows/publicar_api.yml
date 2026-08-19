@@ -33,7 +33,7 @@ jobs:
         run: python publicar.py
 
       - name: Aguardar GitHub Pages indexar
-        run: sleep 30
+        run: sleep 10
 
       - name: Guardar imagens, metadados e publicados
         run: |
